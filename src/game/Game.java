@@ -19,6 +19,7 @@ public class Game {
     private static final String[] STUDENT_IMAGES2 = {"data/Ahmad1.png", "data/Ahmad2.png"};
     private int currentImageIndex = 0;
     private  int currentImageIndex2 = 0;// To track the current image index
+    private boolean canJump = true; // Flag to track if the jump is allowed
     private DynamicBody student; // Student body
     private DynamicBody student2;
 
@@ -39,8 +40,8 @@ public class Game {
         platform1.setPosition(new Vec2(-8, -4f));
 
         //make a character (with an overlaid image)
-        Shape studentShape = new BoxShape(1, 3);
-        Shape studentShape2 = new BoxShape(1, 4);
+        Shape studentShape = new BoxShape(2, 5);
+        Shape studentShape2 = new BoxShape(2, 7);
         student = new DynamicBody(world, studentShape);
         student2 = new DynamicBody(world, studentShape2);
         student.setPosition(new Vec2(4, -5));
@@ -63,8 +64,8 @@ public class Game {
                     currentImageIndex = (currentImageIndex + 1) % STUDENT_IMAGES.length;
                     currentImageIndex2 = (currentImageIndex2 + 1) % STUDENT_IMAGES2.length;
                     // Add the new image
-                    student.addImage(new BodyImage(STUDENT_IMAGES[currentImageIndex], 7));
-                    student2.addImage(new BodyImage(STUDENT_IMAGES2[currentImageIndex2], 9));
+                    student.addImage(new BodyImage(STUDENT_IMAGES[currentImageIndex], 12));
+                    student2.addImage(new BodyImage(STUDENT_IMAGES2[currentImageIndex2], 16));
                 });
             }
         }, 0, 500); // Schedule the task to run every 1000 milliseconds (1 second)
@@ -87,32 +88,50 @@ public class Game {
                 if (key == KeyEvent.VK_LEFT) {
                     student.setLinearVelocity(new Vec2(-10, student.getLinearVelocity().y));
                     student.removeAllImages();
-                    student.addImage(new BodyImage("data/Talip2.png", 7));
+                    student.addImage(new BodyImage("data/Talip2.png", 12));
                 } else if (key == KeyEvent.VK_RIGHT) {
                     student.setLinearVelocity(new Vec2(10, student.getLinearVelocity().y));
                 } else if (key == KeyEvent.VK_UP) {
-                    student.setLinearVelocity(new Vec2(student.getLinearVelocity().x, 90));
-                    student.removeAllImages();
-                    student.addImage(new BodyImage("data/TalipJump.png", 5));
+                    if (canJump) {
+                        student.setLinearVelocity(new Vec2(student.getLinearVelocity().x, 90));
+                        student.removeAllImages();
+                        student.addImage(new BodyImage("data/TalipJump.png", 8));
+                        canJump = false;
+
+                        // Reset the flag after a certain time has passed
+                        Timer jumpTimer = new Timer();
+                        jumpTimer.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                canJump = true;
+                            }
+                        }, 2000); // Allow jump again after 4 second
+                    }
                 } else if (key == KeyEvent.VK_DOWN) {
                     student.setLinearVelocity(new Vec2(student.getLinearVelocity().x, -20));
                     student.removeAllImages();
-                    student.addImage(new BodyImage("data/TalipJump.png", 5));
+                    student.addImage(new BodyImage("data/TalipJump.png", 8));
                 } else if (key == KeyEvent.VK_SPACE) {
                     student.removeAllImages();
-                    student.addImage(new BodyImage("data/Talip3.png", 7));
+                    student.addImage(new BodyImage("data/Talip3.png", 12));
                 } else if (key == KeyEvent.VK_W){
-                    student2.setLinearVelocity(new Vec2(student.getLinearVelocity().x, 10));
+                    student2.setLinearVelocity(new Vec2(student2.getLinearVelocity().x, 20));
                     student2.removeAllImages();
-                    student2.addImage(new BodyImage("data/AhmadJump.png", 8));
+                    student2.addImage(new BodyImage("data/AhmadJump.png", 14));
                 } else if (key == KeyEvent.VK_D) {
-                    student2.setLinearVelocity(new Vec2(10, student.getLinearVelocity().y));
+                    student2.setLinearVelocity(new Vec2(10, student2.getLinearVelocity().y));
                 } else if (key == KeyEvent.VK_A) {
                     student2.setLinearVelocity(new Vec2(-10, student2.getLinearVelocity().y));
                 } else if (key == KeyEvent.VK_S) {
                     student2.setLinearVelocity(new Vec2(student.getLinearVelocity().x, -20));
                     student2.removeAllImages();
-                    student2.addImage(new BodyImage("data/AhmadJump.png", 8));
+                    student2.addImage(new BodyImage("data/AhmadJump.png", 14));
+                } else if (key == KeyEvent.VK_E) {
+                    student2.removeAllImages();
+                    student2.addImage(new BodyImage("data/AhmadPunch1.png", 15));
+                } else if (key == KeyEvent.VK_Q) {
+                    student2.removeAllImages();
+                    student2.addImage(new BodyImage("data/AhmadPunch2.png", 15));
                 }
             }
 
@@ -123,6 +142,10 @@ public class Game {
                     student.setLinearVelocity(new Vec2(0, student.getLinearVelocity().y));
                 } else if (key == KeyEvent.VK_UP || key == KeyEvent.VK_DOWN) {
                     student.setLinearVelocity(new Vec2(student.getLinearVelocity().x, 0));
+                } else if (key == KeyEvent.VK_W || key == KeyEvent.VK_S) {
+                    student2.setLinearVelocity(new Vec2(student2.getLinearVelocity().x, 0));
+                } else if (key == KeyEvent.VK_A || key == KeyEvent.VK_D ) {
+                    student2.setLinearVelocity(new Vec2(0, student2.getLinearVelocity().y));
                 }
             }
         });
@@ -135,7 +158,7 @@ public class Game {
         frame.setVisible(true);
 
         //optional: uncomment this to make a debugging view
-        // JFrame debugView = new DebugViewer(world, 500, 500);
+        JFrame debugView = new DebugViewer(world, 500, 500);
 
         // start our game world simulation!
         world.start();
