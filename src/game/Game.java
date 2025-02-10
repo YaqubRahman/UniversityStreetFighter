@@ -1,30 +1,33 @@
 package game;
 
 import city.cs.engine.*;
-import city.cs.engine.Shape;
 import org.jbox2d.common.Vec2;
 
-import javax.swing.JFrame;
-
-import java.awt.*;
-import java.io.IOException;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Your main game entry point
  */
 public class Game {
 
+    // Image paths
+    private static final String[] STUDENT_IMAGES = {"data/Talip1.png", "data/Talip2.png"};
+    private static final String[] STUDENT_IMAGES2 = {"data/Ahmad1.png", "data/Ahmad2.png"};
+    private int currentImageIndex = 0;
+    private  int currentImageIndex2 = 0;// To track the current image index
+    private DynamicBody student; // Student body
+    private DynamicBody student2;
 
     /** Initialise a new Game. */
     public Game() {
-
         //1. make an empty game world
         World world = new World();
 
         //2. populate it with bodies (ex: platforms, collectibles, characters)
-
         //make a ground platform
         Shape shape = new BoxShape(30, 0.5f);
         StaticBody ground = new StaticBody(world, shape);
@@ -36,38 +39,103 @@ public class Game {
         platform1.setPosition(new Vec2(-8, -4f));
 
         //make a character (with an overlaid image)
-        Shape studentShape = new BoxShape(1,2);
-        DynamicBody student = new DynamicBody(world, studentShape);
-        student.setPosition(new Vec2(4,-5));
-        student.addImage(new BodyImage("data/student.png", 4));
+        Shape studentShape = new BoxShape(1, 3);
+        Shape studentShape2 = new BoxShape(1, 4);
+        student = new DynamicBody(world, studentShape);
+        student2 = new DynamicBody(world, studentShape2);
+        student.setPosition(new Vec2(4, -5));
+        student2.setPosition(new Vec2(10, -5));
 
+        // Add the initial image to the student
+        student.addImage(new BodyImage(STUDENT_IMAGES[currentImageIndex], 7));
+        student2.addImage(new BodyImage(STUDENT_IMAGES2[currentImageIndex2], 7));
+
+        // Timer to alternate the image every second
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                SwingUtilities.invokeLater(() -> {
+                    // Remove the current image
+                    student.removeAllImages();
+                    student2.removeAllImages();
+                    // Switch to the next image
+                    currentImageIndex = (currentImageIndex + 1) % STUDENT_IMAGES.length;
+                    currentImageIndex2 = (currentImageIndex2 + 1) % STUDENT_IMAGES2.length;
+                    // Add the new image
+                    student.addImage(new BodyImage(STUDENT_IMAGES[currentImageIndex], 7));
+                    student2.addImage(new BodyImage(STUDENT_IMAGES2[currentImageIndex2], 9));
+                });
+            }
+        }, 0, 500); // Schedule the task to run every 1000 milliseconds (1 second)
 
         //3. make a view to look into the game world
-        UserView view = new UserView(world, 500, 500);
-
+        UserView view = new UserView(world, 1000, 500);
 
         //optional: draw a 1-metre grid over the view
         // view.setGridResolution(1);
 
-
-        //4. create a Java window (frame) and add the game
-        //   view to it
+        //4. create a Java window (frame) and add the game view to it
         final JFrame frame = new JFrame("City Game");
         frame.add(view);
 
-        // enable the frame to quit the application
-        // when the x button is pressed
+        // Add key listener for character movement
+        frame.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int key = e.getKeyCode();
+                if (key == KeyEvent.VK_LEFT) {
+                    student.setLinearVelocity(new Vec2(-10, student.getLinearVelocity().y));
+                    student.removeAllImages();
+                    student.addImage(new BodyImage("data/Talip2.png", 7));
+                } else if (key == KeyEvent.VK_RIGHT) {
+                    student.setLinearVelocity(new Vec2(10, student.getLinearVelocity().y));
+                } else if (key == KeyEvent.VK_UP) {
+                    student.setLinearVelocity(new Vec2(student.getLinearVelocity().x, 90));
+                    student.removeAllImages();
+                    student.addImage(new BodyImage("data/TalipJump.png", 5));
+                } else if (key == KeyEvent.VK_DOWN) {
+                    student.setLinearVelocity(new Vec2(student.getLinearVelocity().x, -20));
+                    student.removeAllImages();
+                    student.addImage(new BodyImage("data/TalipJump.png", 5));
+                } else if (key == KeyEvent.VK_SPACE) {
+                    student.removeAllImages();
+                    student.addImage(new BodyImage("data/Talip3.png", 7));
+                } else if (key == KeyEvent.VK_W){
+                    student2.setLinearVelocity(new Vec2(student.getLinearVelocity().x, 10));
+                    student2.removeAllImages();
+                    student2.addImage(new BodyImage("data/AhmadJump.png", 8));
+                } else if (key == KeyEvent.VK_D) {
+                    student2.setLinearVelocity(new Vec2(10, student.getLinearVelocity().y));
+                } else if (key == KeyEvent.VK_A) {
+                    student2.setLinearVelocity(new Vec2(-10, student2.getLinearVelocity().y));
+                } else if (key == KeyEvent.VK_S) {
+                    student2.setLinearVelocity(new Vec2(student.getLinearVelocity().x, -20));
+                    student2.removeAllImages();
+                    student2.addImage(new BodyImage("data/AhmadJump.png", 8));
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                int key = e.getKeyCode();
+                if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_RIGHT) {
+                    student.setLinearVelocity(new Vec2(0, student.getLinearVelocity().y));
+                } else if (key == KeyEvent.VK_UP || key == KeyEvent.VK_DOWN) {
+                    student.setLinearVelocity(new Vec2(student.getLinearVelocity().x, 0));
+                }
+            }
+        });
+
+        // enable the frame to quit the application when the x button is pressed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationByPlatform(true);
-        // don't let the frame be resized
         frame.setResizable(false);
-        // size the frame to fit the world view
         frame.pack();
-        // finally, make the frame visible
         frame.setVisible(true);
 
         //optional: uncomment this to make a debugging view
-         JFrame debugView = new DebugViewer(world, 500, 500);
+        // JFrame debugView = new DebugViewer(world, 500, 500);
 
         // start our game world simulation!
         world.start();
@@ -75,7 +143,6 @@ public class Game {
 
     /** Run the game. */
     public static void main(String[] args) {
-
         new Game();
     }
 }
