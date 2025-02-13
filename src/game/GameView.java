@@ -6,8 +6,6 @@ import javax.swing.ImageIcon;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
-
-
 public class GameView extends UserView {
     private Image background;
 
@@ -22,6 +20,8 @@ public class GameView extends UserView {
         }
     }
 
+
+
     @Override
     protected void paintBackground(Graphics2D g) {
         // Draw the background image if it loaded successfully
@@ -29,6 +29,7 @@ public class GameView extends UserView {
             g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
         }
     }
+
 
     @Override
     protected void paintForeground(Graphics2D g) {

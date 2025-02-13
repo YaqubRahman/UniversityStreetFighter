@@ -37,15 +37,15 @@ public class Game {
         // make a suspended platform
         Shape platformShape = new BoxShape(3, 0.5f);
         StaticBody platform1 = new StaticBody(world, platformShape);
-        platform1.setPosition(new Vec2(-8, -4f));
+        platform1.setPosition(new Vec2(1, -4f));
 
         //make a character (with an overlaid image)
         Shape studentShape = new BoxShape(2, 5);
         Shape studentShape2 = new BoxShape(2, 7);
         student = new DynamicBody(world, studentShape);
         student2 = new DynamicBody(world, studentShape2);
-        student.setPosition(new Vec2(4, -5));
-        student2.setPosition(new Vec2(10, -5));
+        student.setPosition(new Vec2(-17, -5));
+        student2.setPosition(new Vec2(15, -5));
 
         // Add the initial image to the student
         student.addImage(new BodyImage(STUDENT_IMAGES[currentImageIndex], 7));
