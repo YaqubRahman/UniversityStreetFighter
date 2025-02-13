@@ -137,7 +137,22 @@ public class Game {
                 } else if (key == KeyEvent.VK_Q) {
                     student2.removeAllImages();
                     student2.addImage(new BodyImage("data/AhmadPunch2.png", 15));
+                } else if (key == KeyEvent.VK_F) {
+                    student2.removeAllImages();
+                    student2.addImage(new BodyImage("data/Ahmad3.png", 15));
+                    Timer timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            SwingUtilities.invokeLater(() -> {
+                                student2.removeAllImages();
+                                student2.addImage(new BodyImage("data/Ahmad4.png", 15));
+                            });
+                        }
+                    }, 500);
                 }
+
+
             }
 
             @Override
