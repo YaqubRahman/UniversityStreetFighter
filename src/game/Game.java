@@ -23,10 +23,13 @@ public class Game {
     private DynamicBody student; // Student body
     private DynamicBody student2;
 
+    private static final String background_music = "data/FightingGameTheme.wav";
+
     /** Initialise a new Game. */
     public Game() {
         //1. make an empty game world
         World world = new World();
+        SoundHandler.playSound(background_music, true);
 
         //2. populate it with bodies (ex: platforms, collectibles, characters)
         //make a ground platform
