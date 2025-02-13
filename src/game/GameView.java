@@ -6,6 +6,8 @@ import javax.swing.ImageIcon;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
+
+
 public class GameView extends UserView {
     private Image background;
 
