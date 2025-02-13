@@ -71,7 +71,9 @@ public class Game {
         }, 0, 500); // Schedule the task to run every 1000 milliseconds (1 second)
 
         //3. make a view to look into the game world
-        UserView view = new UserView(world, 1000, 500);
+        GameView view = new GameView(world, 1000, 500);
+
+
 
         //optional: draw a 1-metre grid over the view
         // view.setGridResolution(1);
