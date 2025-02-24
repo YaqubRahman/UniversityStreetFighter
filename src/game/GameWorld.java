@@ -8,13 +8,22 @@ public class GameWorld extends World {
         super();
 
         // make the ground
-        Shape shape = new BoxShape(11, 0.5f);
+        Shape shape = new BoxShape(17, 0.5f);
         StaticBody ground = new StaticBody(this, shape);
-        ground.setPosition(new Vec2(0f, -11.5f));
+        ground.setPosition(new Vec2(0f, -7.5f));
+
+        // make the walls
+        Shape wallright = new BoxShape(1, 40f);
+        StaticBody wall1 = new StaticBody(this, wallright);
+        wall1.setPosition(new Vec2(18f, -7.5f));
+
+        Shape wallleft = new BoxShape(1, 40f);
+        StaticBody wall2 = new StaticBody(this, wallright);
+        wall2.setPosition(new Vec2(-18f, -7.5f));
 
         // make the character
         Student student = new Student(this);
-        student.setPosition(new Vec2(7, -9));
+        student.setPosition(new Vec2(7, -2));
         student.setCredits(student.getCredits() + 15);
 
         //2. populate it with bodies (ex: platforms, collectibles, characters)
