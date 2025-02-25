@@ -58,6 +58,8 @@ public class Game {
         // start our game world simulation!
         world.start();
         view.requestFocus();
+        MouseHandler mouseHandler = new MouseHandler(world, view);
+        view.addMouseListener(mouseHandler);
     }
 
     /** Run the game. */
