@@ -4,6 +4,7 @@ import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
 
 public class GameWorld extends World {
+    private Student student;
     public GameWorld() {
         super();
 
@@ -22,7 +23,7 @@ public class GameWorld extends World {
         wall2.setPosition(new Vec2(-18f, -7.5f));
 
         // make the character
-        Student student = new Student(this);
+        student = new Student(this);
         student.setPosition(new Vec2(7, -2));
         student.setCredits(student.getCredits() + 15);
 
@@ -33,5 +34,8 @@ public class GameWorld extends World {
         StaticBody platform1 = new StaticBody(this, platformShape);
         platform1.setPosition(new Vec2(-8, -4f));
 
+    }
+    public Student getStudent(){
+        return student;
     }
 }

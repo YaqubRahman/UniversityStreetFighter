@@ -27,6 +27,10 @@ public class Game {
         // UserView view = new UserView(world, 500, 500);
         GameView view = new GameView(world, 700, 300);
 
+        StudentController controller = new StudentController(world.getStudent());
+        view.addKeyListener(controller);
+
+
 
         //optional: draw a 1-metre grid over the view
         // view.setGridResolution(1);
@@ -53,6 +57,7 @@ public class Game {
 
         // start our game world simulation!
         world.start();
+        view.requestFocus();
     }
 
     /** Run the game. */
