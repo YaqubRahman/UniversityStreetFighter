@@ -6,7 +6,7 @@ import city.cs.engine.PolygonShape;
 import city.cs.engine.Shape;
 
 public class Student2 extends Walker {
-    private static final Shape studentShape2 = new PolygonShape(0.32f,0.94f, 0.47f,0.48f, 0.32f,-1.77f, -0.76f,-1.78f, -0.6f,0.42f, -0.18f,0.93f);
+    private static final Shape studentShape2 = new PolygonShape ((float) (0.32f *1.7), (float) (0.94f *1.7), (float) (0.47f *1.7), (float) (0.48f *1.7), (float) (0.32f *1.7), (float) (-1.77f *1.7), (float) (-0.76f *1.7), (float) (-1.78f *1.7), (float) (-0.6f *1.7), (float) (0.42f *1.7), (float) (-0.18f *1.7), (float) (0.93f *1.7));
     private static final BodyImage image2 = new BodyImage("data/SkylerDefault1.png", 7f);
 
     private int health;
