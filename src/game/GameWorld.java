@@ -38,6 +38,9 @@ public class GameWorld extends World {
         StaticBody platform1 = new StaticBody(this, platformShape);
         platform1.setPosition(new Vec2(-8, -4f));
 
+
+        this.setGravity(60);
+
     }
     public Student getStudent(){
         return student;
@@ -45,4 +48,5 @@ public class GameWorld extends World {
     public Student2 getStudent2(){
         return student2;
     }
+
 }

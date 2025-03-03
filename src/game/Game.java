@@ -23,6 +23,7 @@ public class Game {
         //1. make an empty game world
         GameWorld world = new GameWorld();
 
+
         //3. make a view to look into the game world
         // UserView view = new UserView(world, 500, 500);
         GameView view = new GameView(world, 700, 300);

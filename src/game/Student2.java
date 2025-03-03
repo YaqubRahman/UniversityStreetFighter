@@ -5,16 +5,43 @@ import city.cs.engine.BodyImage;
 import city.cs.engine.PolygonShape;
 import city.cs.engine.Shape;
 
+import javax.swing.*;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Student2 extends Walker {
     private static final Shape studentShape2 = new PolygonShape ((float) (0.32f *1.7), (float) (0.94f *1.7), (float) (0.47f *1.7), (float) (0.48f *1.7), (float) (0.32f *1.7), (float) (-1.77f *1.7), (float) (-0.76f *1.7), (float) (-1.78f *1.7), (float) (-0.6f *1.7), (float) (0.42f *1.7), (float) (-0.18f *1.7), (float) (0.93f *1.7));
+
+    private static final String[] Student2_Images = {"data/SkylerDefault1.png", "data/SkylerDefault2.png", "data/SkylerDefault4.png"};
+    private int currentImageIndex = 0;
+
     private static final BodyImage image2 = new BodyImage("data/SkylerDefault1.png", 7f);
 
     private int health;
+    private boolean isAnimationRunning = false;
 
     public Student2(World world) {
         super(world, studentShape2);
         addImage(image2);
         health = 0;
+
+        startImageAnimation();
+    }
+
+    private void startImageAnimation(){
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                SwingUtilities.invokeLater(() -> {
+                    if (!isAnimationRunning) {
+                        removeAllImages();
+                        currentImageIndex = (currentImageIndex + 1) % Student2_Images.length;
+                        addImage(new BodyImage(Student2_Images[currentImageIndex], 7f));
+                    }
+                });
+            }
+        }, 0, 200);
     }
 
     public int getHealth() {

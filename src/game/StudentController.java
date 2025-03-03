@@ -30,11 +30,17 @@ public class StudentController implements KeyListener {
         } else if (code == KeyEvent.VK_RIGHT) {
             student.startWalking(5);
         } else if (code == KeyEvent.VK_UP) {
-            student.setLinearVelocity(new Vec2(student.getLinearVelocity().x, 10));
-            //student.removeAllImages();
-            //student.addImage(new BodyImage("data/AhmadJump.png", 7));
+            student.setLinearVelocity(new Vec2(student.getLinearVelocity().x, 30));
+            student.removeAllImages();
+            student.addImage(new BodyImage("data/AhmadJump.png", 7));
         } else if (code == KeyEvent.VK_DOWN) {
-            student.setLinearVelocity(new Vec2(student.getLinearVelocity().x, - 10));
+            student.setLinearVelocity(new Vec2(student.getLinearVelocity().x, - 30));
+        } else if (code == KeyEvent.VK_L){
+            student.removeAllImages();
+            student.addImage(new BodyImage("data/AhmadPunch2.png", 7));
+        } else if (code == KeyEvent.VK_K){
+            student.removeAllImages();
+            student.addImage(new BodyImage("data/AhmadPunch1.png", 7));
         } else if (code == KeyEvent.VK_A) {
             student2.startWalking(-5);
         } else if (code == KeyEvent.VK_D) {
