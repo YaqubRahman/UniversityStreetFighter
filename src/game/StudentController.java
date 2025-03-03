@@ -6,10 +6,13 @@ import org.jbox2d.common.Vec2;
 
 public class StudentController implements KeyListener {
     private Student student;
+    private Student2 student2;
 
-    public StudentController(Student student) {
+    public StudentController(Student student, Student2 student2) {
         this.student = student;
+        this.student2 = student2;
     }
+
 
     @Override
     public void keyTyped(KeyEvent e) {

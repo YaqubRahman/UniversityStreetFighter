@@ -27,7 +27,7 @@ public class Game {
         // UserView view = new UserView(world, 500, 500);
         GameView view = new GameView(world, 700, 300);
 
-        StudentController controller = new StudentController(world.getStudent());
+        StudentController controller = new StudentController(world.getStudent(), world.getStudent2());
         view.addKeyListener(controller);
 
 
@@ -58,8 +58,6 @@ public class Game {
         // start our game world simulation!
         world.start();
         view.requestFocus();
-        MouseHandler mouseHandler = new MouseHandler(world, view);
-        view.addMouseListener(mouseHandler);
     }
 
     /** Run the game. */

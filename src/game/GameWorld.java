@@ -5,6 +5,7 @@ import org.jbox2d.common.Vec2;
 
 public class GameWorld extends World {
     private Student student;
+    private Student2 student2;
     public GameWorld() {
         super();
 
@@ -27,6 +28,9 @@ public class GameWorld extends World {
         student.setPosition(new Vec2(7, -2));
         student.setCredits(student.getCredits() + 15);
 
+        student2 = new Student2(this);
+        student2.setPosition(new Vec2(1, -2));
+
         //2. populate it with bodies (ex: platforms, collectibles, characters)
 
         // make a suspended platform
@@ -37,5 +41,8 @@ public class GameWorld extends World {
     }
     public Student getStudent(){
         return student;
+    }
+    public Student2 getStudent2(){
+        return student2;
     }
 }
