@@ -16,6 +16,7 @@ public class GameWorld extends World {
         Shape shape = new BoxShape(17, 0.5f);
         StaticBody ground = new StaticBody(this, shape);
         ground.setPosition(new Vec2(0f, -7.5f));
+        ground.setFillColor(new Color(0, 0, 0, 0));
 
         // make the walls
         Shape wallright = new BoxShape(1, 40f);
