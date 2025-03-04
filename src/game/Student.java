@@ -16,13 +16,14 @@ public class Student extends Walker {
 
     private static final BodyImage image1 = new BodyImage("data/Ahmad1.png", 7f);
 
-    private int credits;
+    private int health;
     private boolean isAnimationRunning = false;
+
 
     public Student(World world) {
         super(world, studentShape1);
         addImage(image1);
-        credits = 0;
+        health = 0;
 
         startImageAnimation();
     }
@@ -46,11 +47,11 @@ public class Student extends Walker {
 
 
 
-    public int getCredits(){
-        return credits;
+    public int getHealth() {
+        return health;
     }
 
-    public void setCredits(int credits){
-        this.credits = credits;
+    public void setHealth(int health) {
+        this.health = health;
     }
 }

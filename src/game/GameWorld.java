@@ -1,7 +1,10 @@
 package game;
 
 import city.cs.engine.*;
+import city.cs.engine.Shape;
 import org.jbox2d.common.Vec2;
+
+import java.awt.*;
 
 public class GameWorld extends World {
     private Student student;
@@ -25,18 +28,25 @@ public class GameWorld extends World {
 
         // make the character
         student = new Student(this);
-        student.setPosition(new Vec2(7, -2));
-        student.setCredits(student.getCredits() + 15);
+        student.setPosition(new Vec2(8, 4f));
+        student.setHealth(student.getHealth() + 100);
 
         student2 = new Student2(this);
-        student2.setPosition(new Vec2(1, -2));
+        student2.setPosition(new Vec2(-8, 4f));
+        student2.setHealth(student2.getHealth() + 100);
 
         //2. populate it with bodies (ex: platforms, collectibles, characters)
 
         // make a suspended platform
-        Shape platformShape = new BoxShape(3, 0.5f);
+        Shape platformShape = new BoxShape(1F, 0.2F);
         StaticBody platform1 = new StaticBody(this, platformShape);
-        platform1.setPosition(new Vec2(-8, -4f));
+        platform1.setPosition(new Vec2(-8, 0f));
+        platform1.setFillColor(Color.ORANGE);
+
+        Shape platformShape2 = new BoxShape(1F, 0.2F);
+        StaticBody platform2 = new StaticBody(this, platformShape2);
+        platform2.setPosition(new Vec2(8, 0f));
+        platform2.setFillColor(Color.ORANGE);
 
 
         this.setGravity(60);
