@@ -16,6 +16,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  */
 public class Game {
 
+    private static final String background_music = "data/GameMusic.wav";
 
     /** Initialise a new Game. */
     public Game() {
@@ -28,6 +29,7 @@ public class Game {
         // UserView view = new UserView(world, 500, 500);
         GameView view = new GameView(world, 700, 300);
 
+        SoundHandler.playSound(background_music, true);
         StudentController controller = new StudentController(world.getStudent(), world.getStudent2());
         view.addKeyListener(controller);
 
