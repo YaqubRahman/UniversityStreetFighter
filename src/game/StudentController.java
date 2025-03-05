@@ -36,9 +36,11 @@ public class StudentController implements KeyListener {
             student.setLinearVelocity(new Vec2(student.getLinearVelocity().x, - 30));
         } else if (code == KeyEvent.VK_L){
             student.removeAllImages();
+            student.setPunching(true);
             student.addImage(new BodyImage("data/AhmadPunch2.png", 7));
         } else if (code == KeyEvent.VK_K){
             student.removeAllImages();
+            student.setPunching(true);
             student.addImage(new BodyImage("data/AhmadPunch1.png", 7));
         } else if (code == KeyEvent.VK_A) {
             student2.startWalking(-5);
@@ -63,8 +65,9 @@ public class StudentController implements KeyListener {
             student2.setLinearVelocity(new Vec2(student2.getLinearVelocity().x, 0));
         } else if (key == KeyEvent.VK_A || key == KeyEvent.VK_D){
             student2.stopWalking();
-
-    }
+        } else if (key == KeyEvent.VK_L || key == KeyEvent.VK_K){
+            student.setPunching(false);
+        }
 }
 
 

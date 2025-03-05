@@ -19,6 +19,7 @@ public class Student extends Walker {
 
     private int health;
     private boolean isAnimationRunning = false;
+    private boolean isPunching;
 
 
     public Student(World world) {
@@ -70,5 +71,13 @@ public class Student extends Walker {
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    public Boolean getPunching(){
+        return isPunching;
+    }
+
+    public void setPunching(Boolean isPunching){
+        this.isPunching = isPunching;
     }
 }
