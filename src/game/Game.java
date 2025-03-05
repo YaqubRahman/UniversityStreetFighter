@@ -34,7 +34,6 @@ public class Game {
         view.addKeyListener(controller);
 
 
-
         //optional: draw a 1-metre grid over the view
         // view.setGridResolution(1);
 

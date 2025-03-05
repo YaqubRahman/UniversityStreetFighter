@@ -15,7 +15,6 @@ public class StudentController implements KeyListener {
         this.student2 = student2;
     }
 
-
     @Override
     public void keyTyped(KeyEvent e) {
 

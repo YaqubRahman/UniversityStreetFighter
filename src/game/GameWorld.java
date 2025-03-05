@@ -3,8 +3,10 @@ package game;
 import city.cs.engine.*;
 import city.cs.engine.Shape;
 import org.jbox2d.common.Vec2;
-
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 public class GameWorld extends World {
     private Student student;
@@ -28,10 +30,12 @@ public class GameWorld extends World {
         wall2.setPosition(new Vec2(-18f, -7.5f));
 
         // make the character
+        //Ahmad (Player1) (Right side)
         student = new Student(this);
         student.setPosition(new Vec2(8, 4f));
         student.setHealth(student.getHealth() + 100);
 
+        //Skyler (Player2) (Left side)
         student2 = new Student2(this);
         student2.setPosition(new Vec2(-8, 4f));
         student2.setHealth(student2.getHealth() + 100);
@@ -49,8 +53,19 @@ public class GameWorld extends World {
         platform2.setPosition(new Vec2(8, 0f));
         platform2.setFillColor(Color.ORANGE);
 
-
         this.setGravity(60);
+
+        PunchTracker punchtracker = new PunchTracker(student, student2);
+        student.addCollisionListener(punchtracker);
+
+        //java.util.Timer timer = new java.util.Timer();
+        //timer.schedule(new java.util.TimerTask() {
+        //    @Override
+        //    public void run() {
+        //        checkFlip(student, student2); // Call your flip logic
+        //    }
+        //}, 0, 1); // Run every 1ms
+
 
     }
     public Student getStudent(){
@@ -60,4 +75,16 @@ public class GameWorld extends World {
         return student2;
     }
 
+    public void checkFlip(Student student, Student2 student2){
+        if(student.getPosition().x < student2.getPosition().x){
+            student.startImageAnimationFlip();
+        } else if(student.getPosition().x > student2.getPosition().x){
+            student.startImageAnimation();
+        }
+    }
+
+
+
 }
+
+
