@@ -18,6 +18,7 @@ public class Student extends Walker {
     private static final BodyImage image1 = new BodyImage("data/Ahmad1.png", 7f);
 
     private int health;
+    private int coin;
     private boolean isAnimationRunning = false;
     private boolean isPunching;
 
@@ -26,6 +27,7 @@ public class Student extends Walker {
         super(world, studentShape1);
         addImage(image1);
         health = 0;
+        coin = 0;
 
         startImageAnimation();
     }
@@ -71,6 +73,13 @@ public class Student extends Walker {
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    public int getCoin() {
+        return coin;
+    }
+    public void setCoin(int coin) {
+        this.coin = coin;
     }
 
     public Boolean getPunching(){

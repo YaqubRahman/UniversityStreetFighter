@@ -11,6 +11,7 @@ import javax.swing.Timer;
 public class GameWorld extends World {
     private Student student;
     private Student2 student2;
+    private Coin coin;
     public GameWorld() {
         super();
 
@@ -39,6 +40,10 @@ public class GameWorld extends World {
         student2 = new Student2(this);
         student2.setPosition(new Vec2(-8, 4f));
         student2.setHealth(student2.getHealth() + 100);
+
+        coin = new Coin(this);
+        coin.setPosition(new Vec2(-2, 4f));
+
 
         //2. populate it with bodies (ex: platforms, collectibles, characters)
 

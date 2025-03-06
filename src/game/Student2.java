@@ -18,12 +18,14 @@ public class Student2 extends Walker {
     private static final BodyImage image2 = new BodyImage("data/SkylerDefault1.png", 7f);
 
     private int health;
+    private int coin;
     private boolean isAnimationRunning = false;
 
     public Student2(World world) {
         super(world, studentShape2);
         addImage(image2);
         health = 0;
+        coin = 0;
 
         startImageAnimation();
     }
@@ -50,6 +52,13 @@ public class Student2 extends Walker {
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    public int getCoin() {
+        return coin;
+    }
+    public void setCoin(int coin) {
+        this.coin = coin;
     }
 
 

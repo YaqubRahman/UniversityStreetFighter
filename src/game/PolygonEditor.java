@@ -241,7 +241,7 @@ public class PolygonEditor extends JPanel
      * @param args command line arguments.
      */
     public static void main(String[] args) {
-        String fileName = "data/SkylerDefault1.png";
+        String fileName = "data/Coin.gif";
         float boxHeight = 4.0f;
         int firstCoordIndex = 0;
         if (args.length > 0) {
