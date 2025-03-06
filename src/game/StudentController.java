@@ -50,6 +50,38 @@ public class StudentController implements KeyListener {
             student2.setLinearVelocity(new Vec2(student2.getLinearVelocity().x, 30));
         } else if (code == KeyEvent.VK_S) {
             student2.setLinearVelocity(new Vec2(student2.getLinearVelocity().x, - 30));
+        } else if (code == KeyEvent.VK_Q) {
+            if (!student2.getisAnimationRunning()) {
+                student2.setisAnimationRunning(true);
+                student2.removeAllImages();
+                student2.addImage(new BodyImage("data/SkylerUpper1.png", 7));
+
+                java.util.Timer timer = new java.util.Timer();
+                timer.schedule(new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        student2.removeAllImages();
+                        student2.addImage(new BodyImage("data/SkylerUpper2.png", 7));
+                    }
+                }, 0, 100);
+
+                timer.schedule(new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        student2.removeAllImages();
+                        student2.addImage(new BodyImage("data/SkylerUpper3.png", 7));
+                    }
+                }, 0, 200);
+
+                timer.schedule(new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        student2.removeAllImages();
+                        student2.addImage(new BodyImage("data/SkylerUpper4.png", 7));
+                        student2.setisAnimationRunning(false);
+                    }
+                }, 0, 300);
+            }
         }
 
     }

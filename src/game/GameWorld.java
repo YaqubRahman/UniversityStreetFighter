@@ -33,16 +33,22 @@ public class GameWorld extends World {
         // make the character
         //Ahmad (Player1) (Right side)
         student = new Student(this);
-        student.setPosition(new Vec2(8, 4f));
+        student.setPosition(new Vec2(8, -4f));
         student.setHealth(student.getHealth() + 100);
 
         //Skyler (Player2) (Left side)
         student2 = new Student2(this);
-        student2.setPosition(new Vec2(-8, 4f));
+        student2.setPosition(new Vec2(-8, -4f));
         student2.setHealth(student2.getHealth() + 100);
 
         coin = new Coin(this);
-        coin.setPosition(new Vec2(-2, 4f));
+        coin.setPosition(new Vec2(-8, 4f));
+
+        coin.addCollisionListener(new CoinCollisionListener(student, student2));
+        CoinCollisionListener pickup = new CoinCollisionListener(student, student2);
+        student.addCollisionListener(pickup);
+        student2.addCollisionListener(pickup);
+
 
 
         //2. populate it with bodies (ex: platforms, collectibles, characters)

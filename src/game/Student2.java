@@ -19,13 +19,14 @@ public class Student2 extends Walker {
 
     private int health;
     private int coin;
-    private boolean isAnimationRunning = false;
+    public boolean isAnimationRunning = false;
 
     public Student2(World world) {
         super(world, studentShape2);
         addImage(image2);
         health = 0;
         coin = 0;
+        isAnimationRunning = false;
 
         startImageAnimation();
     }
@@ -44,6 +45,19 @@ public class Student2 extends Walker {
                 });
             }
         }, 0, 200);
+    }
+
+    public Boolean getisAnimationRunning() {
+        return isAnimationRunning;
+    }
+
+    public void setisAnimationRunning(Boolean isAnimationRunning) {
+        this.isAnimationRunning = isAnimationRunning;
+        if (isAnimationRunning) {
+            currentImageIndex = 0;
+        } else{
+            startImageAnimation();
+        }
     }
 
     public int getHealth() {
