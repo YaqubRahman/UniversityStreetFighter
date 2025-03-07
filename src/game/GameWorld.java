@@ -55,6 +55,7 @@ public class GameWorld extends World {
                 coin.setPosition(new Vec2(randomX, randomY));
 
                 coin.addCollisionListener(new CoinCollisionListener(student, student2));
+
             }
         }, 2000, 3000);
 

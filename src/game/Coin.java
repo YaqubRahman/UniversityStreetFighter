@@ -10,7 +10,7 @@ import java.util.TimerTask;
 
 
 public class Coin extends Walker {
-    private static final Shape coinShape = new BoxShape(0.7F,0.7F);
+    private static final Shape coinShape = new CircleShape(0.7F);
     private static BodyImage image = new BodyImage("data/Coin.gif");
 
     private boolean isPickedUp;
