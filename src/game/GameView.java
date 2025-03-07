@@ -33,7 +33,7 @@ public class GameView extends UserView {
         g.drawString("Health: " + student2Health, 150, 30);
         g.drawString("Health: " + student1Health, 450, 30);
         g.drawString("Coins: " + student2Coin, 30, 30);
-        g.drawString("Coins: " + student1Coin, 600, 30);
+        g.drawString("Coins: " + student1Coin, 590, 30);
         g.drawImage(AhmadVSkylerImage, 280, 0, 150, 40, this);
     }
 }
