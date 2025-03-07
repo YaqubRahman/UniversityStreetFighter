@@ -63,7 +63,7 @@ public class StudentController implements KeyListener {
                         student2.removeAllImages();
                         student2.addImage(new BodyImage("data/SkylerUpper2.png", 7));
                     }
-                }, 0, 100);
+                }, 100);
 
                 timer.schedule(new java.util.TimerTask() {
                     @Override
@@ -71,16 +71,57 @@ public class StudentController implements KeyListener {
                         student2.removeAllImages();
                         student2.addImage(new BodyImage("data/SkylerUpper3.png", 7));
                     }
-                }, 0, 200);
+                }, 200);
 
                 timer.schedule(new java.util.TimerTask() {
                     @Override
                     public void run() {
                         student2.removeAllImages();
                         student2.addImage(new BodyImage("data/SkylerUpper4.png", 7));
-                        student2.setisAnimationRunning(false);
+
+                        timer.schedule(new java.util.TimerTask() {
+                            @Override
+                            public void run() {
+                                student2.setisAnimationRunning(false);
+                                timer.cancel(); // Clean up the timer
+                            }
+                        }, 200);
+
                     }
-                }, 0, 300);
+                }, 300);
+            }
+        } else if (code == KeyEvent.VK_E) {
+            if (!student2.getisAnimationRunning()) {
+                student2.setisAnimationRunning(true);
+                student2.removeAllImages();
+                student2.addImage(new BodyImage("data/SkylerUppercaut1.png", 7));
+
+                java.util.Timer timer = new java.util.Timer();
+                timer.schedule(new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        student2.removeAllImages();
+                        student2.addImage(new BodyImage("data/SkylerUppercaut2.png", 7));
+                    }
+                }, 100);
+
+                timer.schedule(new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        student2.removeAllImages();
+                        student2.addImage(new BodyImage("data/SkylerUppercaut3.png", 7));
+
+                        timer.schedule(new java.util.TimerTask() {
+                            @Override
+                            public void run() {
+                                student2.setisAnimationRunning(false);
+                                timer.cancel(); // Clean up the timer
+                            }
+                        }, 200);
+
+                    }
+                }, 200);
+
             }
         }
 
