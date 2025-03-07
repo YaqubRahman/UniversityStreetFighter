@@ -53,6 +53,7 @@ public class StudentController implements KeyListener {
         } else if (code == KeyEvent.VK_Q) {
             if (!student2.getisAnimationRunning()) {
                 student2.setisAnimationRunning(true);
+                student2.setPunching(true);
                 student2.removeAllImages();
                 student2.addImage(new BodyImage("data/SkylerUpper1.png", 7));
 
@@ -93,6 +94,7 @@ public class StudentController implements KeyListener {
         } else if (code == KeyEvent.VK_E) {
             if (!student2.getisAnimationRunning()) {
                 student2.setisAnimationRunning(true);
+                student2.setPunching(true);
                 student2.removeAllImages();
                 student2.addImage(new BodyImage("data/SkylerUppercaut1.png", 7));
 
@@ -139,6 +141,8 @@ public class StudentController implements KeyListener {
         } else if (key == KeyEvent.VK_A || key == KeyEvent.VK_D){
             student2.stopWalking();
         } else if (key == KeyEvent.VK_L || key == KeyEvent.VK_K){
+            student.setPunching(false);
+        } else if (key == KeyEvent.VK_Q || key == KeyEvent.VK_E){
             student.setPunching(false);
         }
 }

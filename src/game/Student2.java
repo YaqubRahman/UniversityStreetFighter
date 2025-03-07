@@ -20,6 +20,7 @@ public class Student2 extends Walker {
     private int health;
     private int coin;
     public boolean isAnimationRunning = false;
+    public boolean isPunching = false;
 
     public Student2(World world) {
         super(world, studentShape2);
@@ -73,6 +74,14 @@ public class Student2 extends Walker {
     }
     public void setCoin(int coin) {
         this.coin = coin;
+    }
+
+    public Boolean getPunching(){
+        return isPunching;
+    }
+
+    public void setPunching(Boolean isPunching){
+        this.isPunching = isPunching;
     }
 
 

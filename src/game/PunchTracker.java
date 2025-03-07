@@ -17,7 +17,8 @@ public class PunchTracker implements CollisionListener {
     public void collide(CollisionEvent e) {
         if (e.getOtherBody() instanceof Student2 && student.getPunching()){
             student2.setHealth(student2.getHealth()-10);
-
+        } else if (e.getOtherBody() instanceof Student2 && student2.getPunching()){
+            student.setHealth(student.getHealth()-10);
         }
 
     }
