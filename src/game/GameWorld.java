@@ -12,6 +12,7 @@ public class GameWorld extends World {
     private Student student;
     private Student2 student2;
     private Coin coin;
+    private Coin coin2;
     public GameWorld() {
         super();
 
@@ -41,14 +42,40 @@ public class GameWorld extends World {
         student2.setPosition(new Vec2(-8, -4f));
         student2.setHealth(student2.getHealth() + 100);
 
-        coin = new Coin(this);
-        coin.setPosition(new Vec2(-8, 4f));
 
-        coin.addCollisionListener(new CoinCollisionListener(student, student2));
-        CoinCollisionListener pickup = new CoinCollisionListener(student, student2);
-        student.addCollisionListener(pickup);
-        student2.addCollisionListener(pickup);
+        java.util.Timer timer = new java.util.Timer();
+        timer.schedule(new java.util.TimerTask() {
+            @Override
+            public void run() {
 
+                int randomX = (int)(Math.random() * 33) - 16; // Random X (-16 to 16)
+                int randomY = (int)(Math.random() * 15) - 7; // Random Y (-7 to 7)
+
+                coin = new Coin(GameWorld.this);
+                coin.setPosition(new Vec2(randomX, randomY));
+
+                coin.addCollisionListener(new CoinCollisionListener(student, student2));
+            }
+        }, 2000, 3000);
+
+
+
+
+        //coin = new Coin(this);
+        //coin.setPosition(new Vec2(-9, 4f));
+
+        coin2 = new Coin(this);
+        coin2.setPosition(new Vec2(8, 4f));
+
+        //coin.addCollisionListener(new CoinCollisionListener(student, student2));
+        //CoinCollisionListener pickup = new CoinCollisionListener(student, student2);
+        //student.addCollisionListener(pickup);
+        //student2.addCollisionListener(pickup);
+
+        coin2.addCollisionListener(new CoinCollisionListener(student, student2));
+        CoinCollisionListener pickup2 = new CoinCollisionListener(student, student2);
+        student.addCollisionListener(pickup2);
+        student2.addCollisionListener(pickup2);
 
 
         //2. populate it with bodies (ex: platforms, collectibles, characters)

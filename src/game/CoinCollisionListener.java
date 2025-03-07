@@ -16,10 +16,11 @@ public class CoinCollisionListener implements CollisionListener {
         if (e.getOtherBody() instanceof Coin) {
             if (e.getReportingBody() == student) {
                 student.setCoin(student.getCoin() + 1);
+                e.getOtherBody().destroy();
             } else if (e.getReportingBody() == student2) {
                 student2.setCoin(student2.getCoin() + 1);
+                e.getOtherBody().destroy();
             }
-            e.getOtherBody().destroy();
         }
     }
 }
