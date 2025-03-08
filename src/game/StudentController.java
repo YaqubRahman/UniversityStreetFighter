@@ -10,6 +10,7 @@ public class StudentController implements KeyListener {
     private Student student;
     private Student2 student2;
 
+    // Constructor
     public StudentController(Student student, Student2 student2) {
         this.student = student;
         this.student2 = student2;
@@ -129,6 +130,7 @@ public class StudentController implements KeyListener {
 
     }
 
+    // Whenever the key is released after press
     @Override
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();

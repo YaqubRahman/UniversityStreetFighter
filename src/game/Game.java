@@ -29,6 +29,7 @@ public class Game {
         // UserView view = new UserView(world, 500, 500);
         GameView view = new GameView(world, 700, 300);
 
+        // Calls an instance of the SoundHandler class and passes in teh background_music and sets the game loop boolean to true
         SoundHandler.playSound(background_music, true);
         StudentController controller = new StudentController(world.getStudent(), world.getStudent2());
         view.addKeyListener(controller);
