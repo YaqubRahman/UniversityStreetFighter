@@ -15,6 +15,7 @@ public class StudentController implements KeyListener {
     private Student student;
     private Student2 student2;
     private static SoundClip punchSound;
+    private static SoundClip jumpSound;
 
     // Constructor
     public StudentController(Student student, Student2 student2) {
@@ -26,6 +27,15 @@ public class StudentController implements KeyListener {
         try{
             punchSound = new SoundClip("data/PunchSoundEffect.wav");
             System.out.println("Loading punch sound");
+        } catch(UnsupportedAudioFileException | IOException | LineUnavailableException e){
+            System.out.println(e);
+        }
+    }
+
+    static{
+        try{
+            jumpSound = new SoundClip("data/JumpSoundEffect.wav");
+            System.out.println("Loading jump sound");
         } catch(UnsupportedAudioFileException | IOException | LineUnavailableException e){
             System.out.println(e);
         }
@@ -50,6 +60,7 @@ public class StudentController implements KeyListener {
             student.setLinearVelocity(new Vec2(student.getLinearVelocity().x, 30));
             student.removeAllImages();
             student.addImage(new BodyImage("data/AhmadJump.png", 7));
+            jumpSound.play();
         } else if (code == KeyEvent.VK_DOWN) {
             student.setLinearVelocity(new Vec2(student.getLinearVelocity().x, - 30));
         } else if (code == KeyEvent.VK_L){
@@ -68,6 +79,7 @@ public class StudentController implements KeyListener {
             student2.startWalking(5);
         } else if (code == KeyEvent.VK_W) {
             student2.setLinearVelocity(new Vec2(student2.getLinearVelocity().x, 30));
+            jumpSound.play();
         } else if (code == KeyEvent.VK_S) {
             student2.setLinearVelocity(new Vec2(student2.getLinearVelocity().x, - 30));
         } else if (code == KeyEvent.VK_Q) {
