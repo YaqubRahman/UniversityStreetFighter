@@ -2,19 +2,36 @@ package game;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 
 import city.cs.engine.BodyImage;
+import city.cs.engine.SoundClip;
 import org.jbox2d.common.Vec2;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class StudentController implements KeyListener {
     private Student student;
     private Student2 student2;
+    private static SoundClip punchSound;
 
     // Constructor
     public StudentController(Student student, Student2 student2) {
         this.student = student;
         this.student2 = student2;
     }
+
+    static{
+        try{
+            punchSound = new SoundClip("data/PunchSoundEffect.wav");
+            System.out.println("Loading punch sound");
+        } catch(UnsupportedAudioFileException | IOException | LineUnavailableException e){
+            System.out.println(e);
+        }
+    }
+
+
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -39,10 +56,12 @@ public class StudentController implements KeyListener {
             student.removeAllImages();
             student.setPunching(true);
             student.addImage(new BodyImage("data/AhmadPunch2.png", 7));
+            punchSound.play();
         } else if (code == KeyEvent.VK_K){
             student.removeAllImages();
             student.setPunching(true);
             student.addImage(new BodyImage("data/AhmadPunch1.png", 7));
+            punchSound.play();
         } else if (code == KeyEvent.VK_A) {
             student2.startWalking(-5);
         } else if (code == KeyEvent.VK_D) {
@@ -57,6 +76,7 @@ public class StudentController implements KeyListener {
                 student2.setPunching(true);
                 student2.removeAllImages();
                 student2.addImage(new BodyImage("data/SkylerUpper1.png", 7));
+                punchSound.play();
 
                 java.util.Timer timer = new java.util.Timer();
                 timer.schedule(new java.util.TimerTask() {
@@ -98,6 +118,7 @@ public class StudentController implements KeyListener {
                 student2.setPunching(true);
                 student2.removeAllImages();
                 student2.addImage(new BodyImage("data/SkylerUppercaut1.png", 7));
+                punchSound.play();
 
                 java.util.Timer timer = new java.util.Timer();
                 timer.schedule(new java.util.TimerTask() {
