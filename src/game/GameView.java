@@ -8,12 +8,17 @@ public class GameView extends UserView {
     private GameWorld world;
     private Image background;
     private Image AhmadVSkylerImage;
+    private ClockTimer clockTimer;
+
 
     public GameView(GameWorld world, int width, int height) {
         super(world, width, height);
         this.world = world;
         background = new ImageIcon("data/Background4.gif").getImage();
         AhmadVSkylerImage = new ImageIcon("data/AhmadVSkylerImage.png").getImage();
+        clockTimer = new ClockTimer(world);
+        this.add(clockTimer.getTimerLabel());
+
     }
 
     @Override
