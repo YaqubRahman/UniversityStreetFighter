@@ -96,6 +96,7 @@ public class GameWorld extends World {
 
         PunchTracker punchtracker = new PunchTracker(student, student2);
         student.addCollisionListener(punchtracker);
+        student2.addCollisionListener(punchtracker);
 
         //java.util.Timer timer = new java.util.Timer();
         //timer.schedule(new java.util.TimerTask() {

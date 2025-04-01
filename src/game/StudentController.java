@@ -178,7 +178,7 @@ public class StudentController implements KeyListener {
         } else if (key == KeyEvent.VK_L || key == KeyEvent.VK_K){
             student.setPunching(false);
         } else if (key == KeyEvent.VK_Q || key == KeyEvent.VK_E){
-            student.setPunching(false);
+            student2.setPunching(false);
         }
 }
 

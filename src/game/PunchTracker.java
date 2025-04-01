@@ -15,11 +15,20 @@ public class PunchTracker implements CollisionListener {
 
     @Override
     public void collide(CollisionEvent e) {
-        if (e.getOtherBody() instanceof Student2 && student.getPunching()){
-            student2.setHealth(student2.getHealth()-10);
-        } else if (e.getOtherBody() instanceof Student2 && student2.getPunching()){
-            student.setHealth(student.getHealth()-10);
+        if (e.getOtherBody() instanceof Student2){
+            System.out.println("Collision! with Skyler");
+            if(student.getPunching()){
+                System.out.println("Ahmad has punched Skyler!");
+                student2.setHealth(student2.getHealth()-10);
+            }
+        } else if (e.getOtherBody() instanceof Student){
+            System.out.println("Collision! with Ahmad");
+            if(student2.getPunching()) {
+                System.out.println("Skyler has punched Ahmad!");
+                student.setHealth(student.getHealth() - 10);
+            }
         }
+
 
     }
 }
