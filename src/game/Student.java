@@ -22,12 +22,17 @@ public class Student extends Walker {
     private boolean isAnimationRunning = false;
     private boolean isPunching;
 
+    private GameWorld level;
+    private Game game;
 
-    public Student(World world) {
+
+    public Student(World world, GameWorld level, Game game) {
         super(world, studentShape1);
         addImage(image1);
         health = 0;
         coin = 0;
+        this.level = level;
+        this.game = game;
 
         startImageAnimation();
     }
@@ -89,4 +94,15 @@ public class Student extends Walker {
     public void setPunching(Boolean isPunching){
         this.isPunching = isPunching;
     }
+
+
+
+
+    public void ifHealthZero(){
+        if(getHealth() == 0 && level.isComplete()){
+            game.goToNextLevel();
+        }
+    }
+
+
 }

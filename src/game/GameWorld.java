@@ -8,12 +8,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
-public class GameWorld extends World {
+public abstract class GameWorld extends World {
     private Student student;
     private Student2 student2;
     private Coin coin;
     private Coin coin2;
-    public GameWorld() {
+    private GameWorld level;
+    private Game game;
+    private boolean levelFinished = false;
+
+
+    public GameWorld(Game game) {
         super();
 
         // make the ground
@@ -33,14 +38,16 @@ public class GameWorld extends World {
 
         // make the character
         //Ahmad (Player1) (Right side)
-        student = new Student(this);
-        student.setPosition(new Vec2(8, -4f));
-        student.setHealth(student.getHealth() + 100);
+        student = new Student(this, level, game);
+        //*****************************************CHANGED THIS COMMENTED OUT
+        //student.setPosition(new Vec2(8, -4f));
+        student.setHealth(student.getHealth() + 10);
 
         //Skyler (Player2) (Left side)
         student2 = new Student2(this);
-        student2.setPosition(new Vec2(-8, -4f));
-        student2.setHealth(student2.getHealth() + 100);
+        //*****************************************CHANGED THIS COMMENTED OUT
+        //student2.setPosition(new Vec2(-8, -4f));
+        student2.setHealth(student2.getHealth() + 10);
 
 
         java.util.Timer timer = new java.util.Timer();
@@ -98,13 +105,22 @@ public class GameWorld extends World {
         student.addCollisionListener(punchtracker);
         student2.addCollisionListener(punchtracker);
 
-        //java.util.Timer timer = new java.util.Timer();
-        //timer.schedule(new java.util.TimerTask() {
-        //    @Override
-        //    public void run() {
-        //        checkFlip(student, student2); // Call your flip logic
-        //    }
-        //}, 0, 1); // Run every 1ms
+        // StepListener to check if level is complete
+        this.addStepListener(new StepListener() {
+            @Override
+            public void preStep(StepEvent e) {
+                // No action needed before step
+            }
+
+            @Override
+            public void postStep(StepEvent e) {
+                if (!levelFinished && isComplete()) {
+                    levelFinished = true; // Prevents multiple transitions
+                    game.goToNextLevel();
+                }
+            }
+        });
+
 
 
     }
@@ -115,13 +131,9 @@ public class GameWorld extends World {
         return student2;
     }
 
-    public void checkFlip(Student student, Student2 student2){
-        if(student.getPosition().x < student2.getPosition().x){
-            student.startImageAnimationFlip();
-        } else if(student.getPosition().x > student2.getPosition().x){
-            student.startImageAnimation();
-        }
-    }
+    public abstract boolean isComplete();
+
+
 
 
 

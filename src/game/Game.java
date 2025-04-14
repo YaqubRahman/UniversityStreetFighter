@@ -16,22 +16,27 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  */
 public class Game {
 
+    private GameWorld level;
+    private GameView view;
+    private StudentController controller;
+
     private static final String background_music = "data/GameMusic.wav";
 
     /** Initialise a new Game. */
     public Game() {
+        level = new Level1(this);
 
         //1. make an empty game world
-        GameWorld world = new GameWorld();
+        // REMOVED THE GAMEWORLD INSTANCE AFTTER ADDING LEVELS
 
 
         //3. make a view to look into the game world
         // UserView view = new UserView(world, 500, 500);
-        GameView view = new GameView(world, 700, 300);
+        view = new GameView(level, 700, 300);
 
         // Calls an instance of the SoundHandler class and passes in teh background_music and sets the game loop boolean to true
         SoundHandler.playSound(background_music, true);
-        StudentController controller = new StudentController(world.getStudent(), world.getStudent2());
+        controller = new StudentController(level.getStudent(), level.getStudent2());
         view.addKeyListener(controller);
 
 
@@ -56,11 +61,28 @@ public class Game {
         frame.setVisible(true);
 
         //optional: uncomment this to make a debugging view
-        JFrame debugView = new DebugViewer(world, 700, 300);
+        JFrame debugView = new DebugViewer(level, 700, 300);
 
         // start our game world simulation!
-        world.start();
+        level.start();
+
         view.requestFocus();
+    }
+
+    public void goToNextLevel(){
+        if (level instanceof Level1){
+            level.stop();
+            level = new Level2(this);
+            // level now refer to the new level
+            view.setWorld(level);
+            controller.updateStudent(level.getStudent(), level.getStudent2());
+            level.start();
+            System.out.println("Second Level!!");
+        }
+        else if (level instanceof Level2){
+            System.out.println("Well done! Game complete.");
+            System.exit(0);
+        }
     }
 
     /** Run the game. */
@@ -68,4 +90,5 @@ public class Game {
 
         new Game();
     }
+
 }

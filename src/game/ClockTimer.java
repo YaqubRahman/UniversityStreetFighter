@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 
 public class ClockTimer {
-    private int remainingTime = 60;
+    private int remainingTime = 100;
     private JLabel timerLabel;
     private Timer countdownTimer;
     private World world;
@@ -22,7 +22,7 @@ public class ClockTimer {
     }
 
     private JLabel setupTimerUI(){
-        timerLabel = new JLabel("60s");
+        timerLabel = new JLabel("100s");
         timerLabel.setFont(new Font("Arial", Font.BOLD, 30));
         timerLabel.setForeground(Color.RED);
         return timerLabel;
@@ -37,7 +37,7 @@ public class ClockTimer {
             @Override
             public void actionPerformed(ActionEvent e) {
                 remainingTime--;
-                timerLabel.setText(remainingTime + "s");
+                timerLabel.setText(String.valueOf(remainingTime));
 
                 if(remainingTime <= 0){
                     System.out.println("Game Over would be here");

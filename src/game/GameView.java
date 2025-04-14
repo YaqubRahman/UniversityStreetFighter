@@ -7,14 +7,18 @@ import java.awt.*;
 public class GameView extends UserView {
     private GameWorld world;
     private Image background;
+    private Image background2;
     private Image AhmadVSkylerImage;
     private ClockTimer clockTimer;
+
+    private GameWorld level;
 
 
     public GameView(GameWorld world, int width, int height) {
         super(world, width, height);
         this.world = world;
         background = new ImageIcon("data/Background4.gif").getImage();
+        background2 = new ImageIcon("data/Background3.gif").getImage();
         AhmadVSkylerImage = new ImageIcon("data/AhmadVSkylerImage.png").getImage();
         clockTimer = new ClockTimer(world);
         this.add(clockTimer.getTimerLabel());

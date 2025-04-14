@@ -41,6 +41,10 @@ public class StudentController implements KeyListener {
         }
     }
 
+    public void updateStudent(Student player1, Student2 player2) {
+        student = player1;
+        student2 = player2;
+    }
 
 
     @Override
