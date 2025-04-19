@@ -16,8 +16,12 @@ public class Level1 extends GameWorld {
     @Override
     public boolean isComplete(){
         if(getStudent().getHealth() == 0 || getStudent2().getHealth() == 0){
-            game.goToNextLevel();
             return true;}
-            else return false;
+        else return false;
+    }
+
+    @Override
+    public String getLevelName() {
+        return "Level1";
     }
 }

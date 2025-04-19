@@ -121,15 +121,17 @@ public abstract class GameWorld extends World {
             }
         });
 
-
-
     }
+
+
     public Student getStudent(){
         return student;
     }
     public Student2 getStudent2(){
         return student2;
     }
+
+    public abstract String getLevelName();
 
     public abstract boolean isComplete();
 

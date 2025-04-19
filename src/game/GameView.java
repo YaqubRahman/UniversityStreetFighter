@@ -16,7 +16,7 @@ public class GameView extends UserView {
 
     public GameView(GameWorld world, int width, int height) {
         super(world, width, height);
-        this.world = world;
+        this.level = world;
         background = new ImageIcon("data/Background4.gif").getImage();
         background2 = new ImageIcon("data/Background3.gif").getImage();
         AhmadVSkylerImage = new ImageIcon("data/AhmadVSkylerImage.png").getImage();
@@ -25,6 +25,8 @@ public class GameView extends UserView {
 
     }
 
+
+
     @Override
     protected void paintBackground(Graphics2D g){
         g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
@@ -32,10 +34,10 @@ public class GameView extends UserView {
 
     @Override
     protected void paintForeground(Graphics2D g){
-        int student1Health = world.getStudent().getHealth();
-        int student2Health = world.getStudent2().getHealth();
-        int student1Coin = world.getStudent().getCoin();
-        int student2Coin = world.getStudent2().getCoin();
+        int student1Health = level.getStudent().getHealth();
+        int student2Health = level.getStudent2().getHealth();
+        int student1Coin = level.getStudent().getCoin();
+        int student2Coin = level.getStudent2().getCoin();
 
         g.setColor(Color.GREEN);
         g.setFont(new Font("Arial", Font.BOLD, 20));

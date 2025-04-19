@@ -20,4 +20,9 @@ public class Level2 extends GameWorld {
             return true;
         else return false;
     }
+
+    @Override
+    public String getLevelName() {
+        return "Level2";
+    }
 }

@@ -26,9 +26,6 @@ public class Game {
     public Game() {
         level = new Level1(this);
 
-        //1. make an empty game world
-        // REMOVED THE GAMEWORLD INSTANCE AFTTER ADDING LEVELS
-
 
         //3. make a view to look into the game world
         // UserView view = new UserView(world, 500, 500);
