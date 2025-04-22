@@ -40,7 +40,7 @@ public class ClockTimer {
                 timerLabel.setText(String.valueOf(remainingTime));
 
                 if(remainingTime <= 0){
-                    System.out.println("Game Over would be here");
+                    System.out.println("Game Over");
                 }
             }
         });

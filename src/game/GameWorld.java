@@ -41,13 +41,13 @@ public abstract class GameWorld extends World {
         student = new Student(this, level, game);
         //*****************************************CHANGED THIS COMMENTED OUT
         //student.setPosition(new Vec2(8, -4f));
-        student.setHealth(student.getHealth() + 10);
+        student.setHealth(student.getHealth() + 100);
 
         //Skyler (Player2) (Left side)
         student2 = new Student2(this);
         //*****************************************CHANGED THIS COMMENTED OUT
         //student2.setPosition(new Vec2(-8, -4f));
-        student2.setHealth(student2.getHealth() + 10);
+        student2.setHealth(student2.getHealth() + 100);
 
 
         java.util.Timer timer = new java.util.Timer();
