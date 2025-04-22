@@ -31,9 +31,19 @@ public class Game {
         // UserView view = new UserView(world, 500, 500);
         view = new GameView(level, 700, 300);
 
+        UserView wideview = new UserView(level, 700, 300);
+        level.addStepListener(new CameraTracker(view, level.getStudent(), level.getStudent2() ));
+
+        wideview.setZoom(3);
+
+
         // Calls an instance of the SoundHandler class and passes in teh background_music and sets the game loop boolean to true
         SoundHandler.playSound(background_music, true);
         controller = new StudentController(level.getStudent(), level.getStudent2());
+
+
+
+
         view.addKeyListener(controller);
 
 
@@ -45,6 +55,7 @@ public class Game {
         //   view to it
         final JFrame frame = new JFrame("City Game");
         frame.add(view);
+
 
         // enable the frame to quit the application
         // when the x button is pressed
