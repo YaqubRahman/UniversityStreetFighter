@@ -80,7 +80,7 @@ public abstract class GameWorld extends World {
                 heart.addCollisionListener(new HeartCollisionListener(student, student2));
 
             }
-        }, 5000, 3000);
+        }, 10000, 10000);
 
 
 

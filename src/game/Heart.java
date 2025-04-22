@@ -15,6 +15,19 @@ import java.util.TimerTask;
 public class Heart extends Walker {
     private static final Shape heartShape = new BoxShape(0.5F,0.5F );
     private static BodyImage image = new BodyImage("data/Heart.gif");
+    private static SoundClip heartPickupSound;
+
+    static{
+        try{
+            heartPickupSound = new SoundClip("data/HeartPickupSoundEffect.wav");
+            System.out.println("Loading heart pickup sound");
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            System.out.println(e);
+        }
+    }
+
+
+
 
     public Heart(World world){
         super(world, heartShape);
@@ -23,6 +36,7 @@ public class Heart extends Walker {
 
     @Override
     public void destroy(){
+        heartPickupSound.play();
         super.destroy();
     }
 

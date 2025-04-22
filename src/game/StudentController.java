@@ -5,6 +5,8 @@ import java.awt.event.KeyListener;
 import java.io.IOException;
 
 import city.cs.engine.BodyImage;
+import city.cs.engine.PolygonShape;
+import city.cs.engine.Shape;
 import city.cs.engine.SoundClip;
 import org.jbox2d.common.Vec2;
 
@@ -14,6 +16,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class StudentController implements KeyListener {
     private Student student;
     private Student2 student2;
+
+    private static final Shape studentShape1Punching = new PolygonShape((-1.32f * 1.7f), (0.66f * 1.7f), (-0.09f * 1.7f), (1.02f * 1.7f), (0.47f * 1.7f), (0.71f * 1.7f), (0.58f * 1.7f), (-1.93f * 1.7f), (-0.65f * 1.7f), (-1.9f * 1.7f), (-1.28f * 1.7f), (0.38f * 1.7f));
+
     private static SoundClip punchSound;
     private static SoundClip jumpSound;
 

@@ -14,9 +14,10 @@ public class ClockTimer {
     private JLabel timerLabel;
     private Timer countdownTimer;
     private World world;
+    private GameWorld level;
 
-    public ClockTimer(World world) {
-        this.world = world;
+    public ClockTimer(GameWorld world) {
+        this.level = world;
         timerLabel = setupTimerUI();
         startCountdownTimer();
     }
@@ -42,9 +43,14 @@ public class ClockTimer {
                 if(remainingTime <= 0){
                     System.out.println("Game Over");
                 }
+
             }
         });
         countdownTimer.start();
+    }
+
+    public boolean isTimeUp(){
+        return remainingTime <= 0;
     }
 
 
