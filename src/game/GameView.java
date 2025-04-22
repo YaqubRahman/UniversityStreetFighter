@@ -1,5 +1,6 @@
 package game;
 
+import city.cs.engine.World;
 import city.cs.engine.UserView;
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,6 @@ public class GameView extends UserView {
 
     private GameWorld level;
 
-
     public GameView(GameWorld world, int width, int height) {
         super(world, width, height);
         this.level = world;
@@ -22,10 +22,7 @@ public class GameView extends UserView {
         AhmadVSkylerImage = new ImageIcon("data/AhmadVSkylerImage.png").getImage();
         clockTimer = new ClockTimer(world);
         this.add(clockTimer.getTimerLabel());
-
     }
-
-
 
     @Override
     protected void paintBackground(Graphics2D g){
@@ -46,5 +43,14 @@ public class GameView extends UserView {
         g.drawString("Coins: " + student2Coin, 30, 30);
         g.drawString("Coins: " + student1Coin, 590, 30);
         g.drawImage(AhmadVSkylerImage, 280, 0, 150, 40, this);
+    }
+
+
+    @Override
+    public void setWorld(World w){
+        super.setWorld(w);
+        if (w instanceof GameWorld){
+            this.level = (GameWorld) w;
+        }
     }
 }
