@@ -13,6 +13,7 @@ public abstract class GameWorld extends World {
     private Student2 student2;
     private Coin coin;
     private Coin coin2;
+    private Heart heart;
     private GameWorld level;
     private Game game;
     private boolean levelFinished = false;
@@ -66,19 +67,27 @@ public abstract class GameWorld extends World {
             }
         }, 2000, 3000);
 
+        timer.schedule(new java.util.TimerTask() {
+            @Override
+            public void run() {
+
+                int randomX = (int)(Math.random() * 33) - 16; // Random X (-16 to 16)
+                int randomY = (int)(Math.random() * 15) - 7; // Random Y (-7 to 7)
+
+                heart = new Heart(GameWorld.this);
+                heart.setPosition(new Vec2(randomX, randomY));
+
+                heart.addCollisionListener(new HeartCollisionListener(student, student2));
+
+            }
+        }, 5000, 3000);
 
 
 
-        //coin = new Coin(this);
-        //coin.setPosition(new Vec2(-9, 4f));
 
         coin2 = new Coin(this);
         coin2.setPosition(new Vec2(8, 4f));
 
-        //coin.addCollisionListener(new CoinCollisionListener(student, student2));
-        //CoinCollisionListener pickup = new CoinCollisionListener(student, student2);
-        //student.addCollisionListener(pickup);
-        //student2.addCollisionListener(pickup);
 
         coin2.addCollisionListener(new CoinCollisionListener(student, student2));
         CoinCollisionListener pickup2 = new CoinCollisionListener(student, student2);
