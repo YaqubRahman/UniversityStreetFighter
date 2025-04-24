@@ -33,10 +33,16 @@ public abstract class GameWorld extends World {
         Shape wallright = new BoxShape(1, 40f);
         StaticBody wall1 = new StaticBody(this, wallright);
         wall1.setPosition(new Vec2(18f, -7.5f));
+        wall1.setFillColor(new Color(0, 0, 0, 0));
+        wall1.setLineColor(new Color(0,0,0,0));
 
         Shape wallleft = new BoxShape(1, 40f);
         StaticBody wall2 = new StaticBody(this, wallright);
         wall2.setPosition(new Vec2(-18f, -7.5f));
+        wall2.setFillColor(new Color(0, 0, 0, 0));
+        wall2.setLineColor(new Color(0,0,0,0));
+
+
 
         // make the character
         //Ahmad (Player1) (Right side)

@@ -14,7 +14,7 @@ public class Explosion extends Walker{
         addImage(image);
         setPosition(new Vec2(x,y));
 
-        new Timer(1000, e -> this.destroy()).start();
+        new Timer(400, e -> this.destroy()).start();
     }
 
 

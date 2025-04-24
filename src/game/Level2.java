@@ -23,21 +23,16 @@ public class Level2 extends GameWorld {
         getStudent2().setPosition(new Vec2(-8, -4f));
         System.out.println("It works/loaded - level 2");
 
-        java.util.Timer timer = new java.util.Timer();
-        timer.schedule(new java.util.TimerTask() {
-            @Override
-            public void run() {
+        new javax.swing.Timer(1000, e -> {
+            int randomX = (int)(Math.random() * 33) - 16;
 
-                int randomX = (int)(Math.random() * 33) - 16; // Random X (-16 to 16)
+            LavaRock lavaRock = new LavaRock(Level2.this);
+            lavaRock.setPosition(new Vec2(randomX, 50));
+            lavaRock.addCollisionListener(new LavaRockCollisionListener(getStudent(), getStudent2()));
 
+            System.out.println("LavaRock spawned at x = " + randomX);
+        }).start();
 
-                lavaRock = new LavaRock(Level2.this);
-                lavaRock.setPosition(new Vec2(randomX, 50));
-
-                lavaRock.addCollisionListener(new LavaRockCollisionListener(student, student2));
-
-            }
-        }, 2000, 2000);
 
 
 
@@ -47,7 +42,7 @@ public class Level2 extends GameWorld {
 
     @Override
     public boolean isComplete(){
-        if(getStudent().getHealth() == 0 || getStudent2().getHealth() == 0)
+        if(getStudent().getHealth() <= 0 || getStudent2().getHealth() <= 0)
             return true;
         else return false;
     }

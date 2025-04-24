@@ -15,7 +15,7 @@ public class Level1 extends GameWorld {
     }
     @Override
     public boolean isComplete(){
-        if(getStudent().getHealth() == 0 || getStudent2().getHealth() == 0){
+        if(getStudent().getHealth() <= 0 || getStudent2().getHealth() <= 0){
             return true;}
         else return false;
     }

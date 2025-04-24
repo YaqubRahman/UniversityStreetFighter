@@ -84,6 +84,7 @@ public class Game {
             // level now refer to the new level
             view.setWorld(level);
             controller.updateStudent(level.getStudent(), level.getStudent2());
+            level.addStepListener(new CameraTracker(view, level.getStudent(), level.getStudent2() ));
             level.start();
             System.out.println("Second Level!!");
         }
