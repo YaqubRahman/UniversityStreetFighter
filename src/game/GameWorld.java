@@ -84,22 +84,6 @@ public abstract class GameWorld extends World {
         }, 10000, 10000);
 
 
-        timer.schedule(new java.util.TimerTask() {
-            @Override
-            public void run() {
-
-                int randomX = (int)(Math.random() * 33) - 16; // Random X (-16 to 16)
-
-
-                lavaRock = new LavaRock(GameWorld.this);
-                lavaRock.setPosition(new Vec2(randomX, 50));
-
-                lavaRock.addCollisionListener(new LavaRockCollisionListener(student, student2));
-
-            }
-        }, 2000, 2000);
-
-
 
         coin2 = new Coin(this);
         coin2.setPosition(new Vec2(8, 4f));
