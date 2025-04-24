@@ -10,12 +10,14 @@ import java.io.IOException;
 
 public class SoundHandler {
 
+    private static Clip currentClip;
+
     public static void playSound(String path, boolean loop){
         try{
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(path));
-            Clip clip = AudioSystem.getClip();
-            clip.open(inputStream);
-            clip.loop(0);
+            currentClip = AudioSystem.getClip();
+            currentClip.open(inputStream);
+            currentClip.loop(0);
         } catch(UnsupportedAudioFileException e){
             System.err.println("Error: Unsupported audio file fomat");
         } catch(LineUnavailableException e) {
@@ -26,4 +28,13 @@ public class SoundHandler {
             e.printStackTrace();
         }
     }
+
+    public static void stopCurrentMusic(){
+        if (currentClip != null && currentClip.isRunning()) {
+            currentClip.stop();
+            currentClip.close();
+        }
+    }
+
+
 }

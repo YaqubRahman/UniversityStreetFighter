@@ -13,10 +13,12 @@ public class Level2 extends GameWorld {
     private LavaRock lavaRock;
     private Student student;
     private Student2 student2;
+    private static final String level2_music = "data/Level2GameMusic.wav";
 
 
     public Level2(Game game) {
         super(game);
+        SoundHandler.playSound(level2_music, true);
         getStudent().setHealth(100);
         getStudent2().setHealth(100);
         getStudent().setPosition(new Vec2(8, -4f));

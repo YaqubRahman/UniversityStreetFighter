@@ -78,6 +78,7 @@ public class Game {
     }
 
     public void goToNextLevel(){
+        SoundHandler.stopCurrentMusic();
         if (level instanceof Level1){
             level.stop();
             level = new Level2(this);
