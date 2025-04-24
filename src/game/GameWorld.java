@@ -25,6 +25,7 @@ public abstract class GameWorld extends World {
     public GameWorld(Game game) {
         super();
 
+
         // make the ground
         Shape shape = new BoxShape(17, 0.5f);
         StaticBody ground = new StaticBody(this, shape);

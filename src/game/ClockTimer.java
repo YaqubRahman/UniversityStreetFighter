@@ -1,6 +1,5 @@
 package game;
 
-import city.cs.engine.UserView;
 import city.cs.engine.World;
 
 import javax.swing.*;
@@ -15,9 +14,11 @@ public class ClockTimer {
     private Timer countdownTimer;
     private World world;
     private GameWorld level;
+    private Game game;
 
-    public ClockTimer(GameWorld world) {
+    public ClockTimer(GameWorld world, Game game) {
         this.level = world;
+        this.game = game;
         timerLabel = setupTimerUI();
         startCountdownTimer();
     }
@@ -42,6 +43,8 @@ public class ClockTimer {
 
                 if(remainingTime <= 0){
                     System.out.println("Game Over");
+                    game.goToNextLevel();
+                    remainingTime = 100;
                 }
 
             }

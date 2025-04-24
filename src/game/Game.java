@@ -27,9 +27,10 @@ public class Game {
         level = new Level1(this);
 
 
+
         //3. make a view to look into the game world
         // UserView view = new UserView(world, 500, 500);
-        view = new GameView(level, 700, 300);
+        view = new GameView(level, 700, 300, this);
 
         UserView wideview = new UserView(level, 700, 300);
         level.addStepListener(new CameraTracker(view, level.getStudent(), level.getStudent2() ));

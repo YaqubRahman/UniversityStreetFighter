@@ -12,17 +12,16 @@ public class GameView extends UserView {
     private Image background5;
     private Image AhmadVSkylerImage;
     private ClockTimer clockTimer;
-
     private GameWorld level;
 
-    public GameView(GameWorld world, int width, int height) {
+    public GameView(GameWorld world, int width, int height, Game game) {
         super(world, width, height);
         this.level = world;
         background = new ImageIcon("data/Background2.gif").getImage();
         background2 = new ImageIcon("data/Background7.gif").getImage();
         background5 = new ImageIcon("data/Background5.gif").getImage();
         AhmadVSkylerImage = new ImageIcon("data/AhmadVSkylerImage.png").getImage();
-        clockTimer = new ClockTimer(world);
+        clockTimer = new ClockTimer(world, game);
         this.add(clockTimer.getTimerLabel());
     }
 
