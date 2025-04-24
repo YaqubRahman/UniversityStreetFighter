@@ -13,6 +13,8 @@ public abstract class GameWorld extends World {
     private Student2 student2;
     private Coin coin;
     private Coin coin2;
+    private javax.swing.Timer coinTimer;
+    private javax.swing.Timer heartTimer;
     private Heart heart;
     private LavaRock lavaRock;
     private GameWorld level;
@@ -44,51 +46,42 @@ public abstract class GameWorld extends World {
 
 
 
-        // make the character
+        // Make the character
         //Ahmad (Player1) (Right side)
         student = new Student(this, level, game);
-        //*****************************************CHANGED THIS COMMENTED OUT
-        //student.setPosition(new Vec2(8, -4f));
         student.setHealth(student.getHealth() + 100);
 
         //Skyler (Player2) (Left side)
         student2 = new Student2(this);
-        //*****************************************CHANGED THIS COMMENTED OUT
-        //student2.setPosition(new Vec2(-8, -4f));
         student2.setHealth(student2.getHealth() + 100);
 
+        // Setting up Coin timer so that coins spawn randomly every 3000ms
+        coinTimer = new javax.swing.Timer(3000, e -> {
+            int randomX = (int)(Math.random() * 33) - 16; // Random X (-16 to 16)
+            int randomY = (int)(Math.random() * 15) - 7; // Random Y (-7 to 7)
 
-        java.util.Timer timer = new java.util.Timer();
-        timer.schedule(new java.util.TimerTask() {
-            @Override
-            public void run() {
+            coin = new Coin(GameWorld.this);
+            coin.setPosition(new Vec2(randomX, randomY));
 
-                int randomX = (int)(Math.random() * 33) - 16; // Random X (-16 to 16)
-                int randomY = (int)(Math.random() * 15) - 7; // Random Y (-7 to 7)
+            coin.addCollisionListener(new CoinCollisionListener(student, student2));
 
-                coin = new Coin(GameWorld.this);
-                coin.setPosition(new Vec2(randomX, randomY));
+        });
+        coinTimer.setInitialDelay(2000);
+        coinTimer.start();
 
-                coin.addCollisionListener(new CoinCollisionListener(student, student2));
+        // Setting up Heart timer so that coins spawn randomly every 5000ms
+        heartTimer = new javax.swing.Timer(5000, e ->{
+            int randomX = (int)(Math.random() * 33) - 16; // Random X (-16 to 16)
+            int randomY = (int)(Math.random() * 15) - 7; // Random Y (-7 to 7)
 
-            }
-        }, 2000, 3000);
+            heart = new Heart(GameWorld.this);
+            heart.setPosition(new Vec2(randomX, randomY));
 
-        timer.schedule(new java.util.TimerTask() {
-            @Override
-            public void run() {
+            heart.addCollisionListener(new HeartCollisionListener(student, student2));
 
-                int randomX = (int)(Math.random() * 33) - 16; // Random X (-16 to 16)
-                int randomY = (int)(Math.random() * 15) - 7; // Random Y (-7 to 7)
-
-                heart = new Heart(GameWorld.this);
-                heart.setPosition(new Vec2(randomX, randomY));
-
-                heart.addCollisionListener(new HeartCollisionListener(student, student2));
-
-            }
-        }, 10000, 10000);
-
+        });
+        heartTimer.setInitialDelay(10000);
+        heartTimer.start();
 
 
         coin2 = new Coin(this);
