@@ -76,6 +76,9 @@ public class Game {
         level.start();
 
         view.requestFocus();
+        view.setFocusable(true);
+        view.requestFocusInWindow();
+
     }
 
     public void goToNextLevel(){
