@@ -17,6 +17,30 @@ public class Level3 extends GameWorld {
         getStudent().setPosition(new Vec2(8, -4f));
         getStudent2().setPosition(new Vec2(-8, -4f));
         System.out.println("It works/loaded - level 3");
+
+        new javax.swing.Timer(5000, e -> {
+            boolean spawnFromLeft = Math.random() < 0.5;
+            float xPosition;
+            float yPosition = (float)(Math.random() * 10) -5;
+            if (spawnFromLeft) {
+                xPosition = -10f;
+            } else {
+                xPosition = 10f;
+            }
+
+            Axe axe = new Axe(Level3.this);
+            axe.setPosition(new Vec2(xPosition, yPosition));
+            axe.addCollisionListener(new AxeCollisionListener(getStudent(), getStudent2()));
+
+            if (spawnFromLeft){
+                axe.setLinearVelocity(new Vec2(10, 0));
+            } else{
+                axe.setLinearVelocity(new Vec2(-10, 0));
+            }
+        }).start();
+
+
+
     }
 
     @Override
