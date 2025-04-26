@@ -4,9 +4,6 @@ import city.cs.engine.*;
 import city.cs.engine.Shape;
 import org.jbox2d.common.Vec2;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.Timer;
 
 public abstract class GameWorld extends World {
     private Student student;
@@ -125,6 +122,8 @@ public abstract class GameWorld extends World {
             public void postStep(StepEvent e) {
                 if (!levelFinished && isComplete()) {
                     levelFinished = true; // Prevents multiple transitions
+                    student.addToTotalCoins(student.getCoin());
+                    student2.addToTotalCoins(student2.getCoin());
                     game.goToNextLevel();
                 }
             }
@@ -132,6 +131,12 @@ public abstract class GameWorld extends World {
 
     }
 
+    public int getStudentTotalCoins(){
+        return student.getTotalCoins();
+    }
+    public int getStudent2TotalCoins(){
+        return student2.getTotalCoins();
+    }
 
     public Student getStudent(){
         return student;

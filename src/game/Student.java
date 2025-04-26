@@ -1,10 +1,8 @@
 package game;
 
 import city.cs.engine.*;
-import org.jbox2d.common.Vec2;
+
 import javax.swing.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -19,6 +17,7 @@ public class Student extends Walker {
 
     private int health;
     private int coin;
+    private int totalCoins;
     private boolean isAnimationRunning = false;
     private boolean isPunching;
 
@@ -85,6 +84,12 @@ public class Student extends Walker {
     }
     public void setCoin(int coin) {
         this.coin = coin;
+    }
+    public void addToTotalCoins(int amount) {
+        totalCoins += amount;
+    }
+    public int getTotalCoins(){
+        return totalCoins;
     }
 
     public Boolean getPunching(){

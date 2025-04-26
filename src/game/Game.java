@@ -4,7 +4,7 @@ import city.cs.engine.*;
 import city.cs.engine.Shape;
 import org.jbox2d.common.Vec2;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import java.awt.*;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * Your main game entry point
  */
 public class Game {
-
+    private JFrame frame;
     private GameWorld level;
     private GameView view;
     private StudentController controller;
@@ -69,6 +69,8 @@ public class Game {
         // finally, make the frame visible
         frame.setVisible(true);
 
+
+
         //optional: uncomment this to make a debugging view
         JFrame debugView = new DebugViewer(level, 700, 300);
 
@@ -84,17 +86,22 @@ public class Game {
     public void goToNextLevel(){
         SoundHandler.stopCurrentMusic();
         if (level instanceof Level1){
+            int previousTotalCoinsStudent = level.getStudent().getTotalCoins();
+            int previousTotalCoinsStudent2 = level.getStudent2().getTotalCoins();
             level.stop();
             level = new Level2(this);
             // level now refer to the new level
             view.setWorld(level);
             controller.updateStudent(level.getStudent(), level.getStudent2());
             level.addStepListener(new CameraTracker(view, level.getStudent(), level.getStudent2() ));
+            level.getStudent().addToTotalCoins(previousTotalCoinsStudent);
+            level.getStudent2().addToTotalCoins(previousTotalCoinsStudent2);
             level.start();
             System.out.println("Second Level!!");
         }
         else if (level instanceof Level2){
             System.out.println("Well done! Game complete.");
+            JOptionPane.showMessageDialog(frame, "End of game! \nRight Player Total Coins:" + level.getStudentTotalCoins() + "\nLeft Player Total Coins:" + level.getStudent2TotalCoins());
             System.exit(0);
         }
     }
