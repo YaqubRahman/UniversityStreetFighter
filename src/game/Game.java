@@ -110,6 +110,8 @@ public class Game {
             level.start();
             System.out.println("Third Level!!");
         } else if (level instanceof Level3) {
+            level.getStudent().addToTotalCoins(previousTotalCoinsStudent);
+            level.getStudent2().addToTotalCoins(previousTotalCoinsStudent2);
             System.out.println("Well done! Game complete.");
             JOptionPane.showMessageDialog(frame, "End of game! \nRight Player Total Coins:" + level.getStudentTotalCoins() + "\nLeft Player Total Coins:" + level.getStudent2TotalCoins());
             System.exit(0);

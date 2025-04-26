@@ -48,6 +48,7 @@ public class GameView extends UserView {
         g.setFont(new Font("Arial", Font.BOLD, 20));
         g.drawString("Health: " + student2Health, 200, 50);
         g.drawString("Health: " + student1Health, 420, 50);
+        g.setColor(Color.ORANGE);
         g.drawString("Coins: " + student2Coin, 30, 30);
         g.drawString("Coins: " + student1Coin, 590, 30);
         g.drawImage(AhmadVSkylerImage, 280, 0, 150, 40, this);
