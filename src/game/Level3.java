@@ -7,6 +7,8 @@ public class Level3 extends GameWorld {
     private Student student;
     private Student2 student2;
     private static final String level3_music = "data/Level3GameMusic.wav";
+    private String winner;
+
 
 
     public Level3(Game game) {
@@ -43,10 +45,20 @@ public class Level3 extends GameWorld {
 
     }
 
+    public String getWinner() {
+        return winner;
+    }
+
+
     @Override
     public boolean isComplete(){
-        if(getStudent().getHealth() <= 0 || getStudent2().getHealth() <= 0)
-            return true;
+        if(getStudent().getHealth() <= 0 || getStudent2().getHealth() <= 0){
+            if(getStudent().getHealth() <= 0){
+                winner = "Left Player";
+            } else if (getStudent2().getHealth() <= 0) {
+                winner = "Right Player";
+            }
+            return true;}
         else return false;
     }
 

@@ -8,6 +8,7 @@ public class Level1 extends GameWorld {
     private Student2 student2;
     private javax.swing.Timer powerUpTimer;
     private PowerUp powerUp;
+    private String winner;
 
     public Level1(Game game) {
         super(game);
@@ -32,11 +33,22 @@ public class Level1 extends GameWorld {
         powerUpTimer.setInitialDelay(5000);
         powerUpTimer.start();
 
-
     }
+
+
+    public String getWinner() {
+        return winner;
+    }
+
+
     @Override
     public boolean isComplete(){
         if(getStudent().getHealth() <= 0 || getStudent2().getHealth() <= 0){
+            if(getStudent().getHealth() <= 0){
+                winner = "Left Player";
+            } else if (getStudent2().getHealth() <= 0) {
+                winner = "Right Player";
+            }
             return true;}
         else return false;
     }

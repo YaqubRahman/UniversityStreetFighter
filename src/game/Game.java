@@ -89,6 +89,7 @@ public class Game {
         int previousTotalCoinsStudent2 = level.getStudent2().getTotalCoins();
         if (level instanceof Level1) {
             level.stop();
+            JOptionPane.showMessageDialog(frame, "End of first level!\n Winner is:" + ((Level1) level).getWinner());
             level = new Level2(this);
             // level now refer to the new level
             view.setWorld(level);
@@ -101,6 +102,7 @@ public class Game {
             System.out.println("Second Level!!");
         } else if (level instanceof Level2) {
             level.stop();
+            JOptionPane.showMessageDialog(frame, "End of second level!\n Winner is:" + ((Level2) level).getWinner());
             level = new Level3(this);
             // level now refer to the new level
             view.setWorld(level);
@@ -115,6 +117,7 @@ public class Game {
             level.getStudent().addToTotalCoins(previousTotalCoinsStudent);
             level.getStudent2().addToTotalCoins(previousTotalCoinsStudent2);
             System.out.println("Well done! Game complete.");
+            JOptionPane.showMessageDialog(frame, "End of third level!\n Winner is:" + ((Level3) level).getWinner());
             JOptionPane.showMessageDialog(frame, "End of game! \nRight Player Total Coins:" + level.getStudentTotalCoins() + "\nLeft Player Total Coins:" + level.getStudent2TotalCoins());
             System.exit(0);
         }
