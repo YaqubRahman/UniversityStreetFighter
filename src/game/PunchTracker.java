@@ -35,9 +35,15 @@ public class PunchTracker implements CollisionListener {
         if (e.getOtherBody() instanceof Student2){
             System.out.println("Collision! with Skyler");
             if(student.getPunching()){
-                System.out.println("Ahmad has punched Skyler!");
-                gruntSound.play();
-                student2.setHealth(student2.getHealth()-10);
+                if(student.getRedBand()){
+                    System.out.println("Ahmad has punched Skyler!");
+                    gruntSound.play();
+                    student2.setHealth(student2.getHealth()-30);
+                } else {
+                    System.out.println("Ahmad has punched Skyler!");
+                    gruntSound.play();
+                    student2.setHealth(student2.getHealth() - 10);
+                }
             }
         } else if (e.getOtherBody() instanceof Student){
             System.out.println("Collision! with Ahmad");

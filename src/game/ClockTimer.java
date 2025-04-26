@@ -52,8 +52,9 @@ public class ClockTimer {
         countdownTimer.start();
     }
 
-    public boolean isTimeUp(){
-        return remainingTime <= 0;
+    public void resetTimer() {
+        remainingTime = 100;
+        timerLabel.setText(String.valueOf(remainingTime));
     }
 
 

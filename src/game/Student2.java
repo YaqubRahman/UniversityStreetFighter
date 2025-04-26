@@ -13,6 +13,7 @@ public class Student2 extends Walker {
     private static final Shape studentShape2 = new PolygonShape ((float) (0.32f *1.7), (float) (0.94f *1.7), (float) (0.47f *1.7), (float) (0.48f *1.7), (float) (0.32f *1.7), (float) (-1.77f *1.7), (float) (-0.76f *1.7), (float) (-1.78f *1.7), (float) (-0.6f *1.7), (float) (0.42f *1.7), (float) (-0.18f *1.7), (float) (0.93f *1.7));
 
     private static final String[] Student2_Images = {"data/SkylerDefault1.png", "data/SkylerDefault2.png", "data/SkylerDefault4.png"};
+    private static final String[] Student2_ImagesRedEars = {"data/SkylerDefault1RedEars.png", "data/SkylerDefault2RedEars.png", "data/SkylerDefault4RedEars.png"};
     private int currentImageIndex = 0;
 
     private static final BodyImage image2 = new BodyImage("data/SkylerDefault1.png", 7f);
@@ -21,6 +22,7 @@ public class Student2 extends Walker {
     private int coin;
     private int totalCoins;
     public boolean isAnimationRunning = false;
+    private boolean redEars = false;
     public boolean isPunching = false;
 
     public Student2(World world) {
@@ -40,9 +42,16 @@ public class Student2 extends Walker {
             public void run() {
                 SwingUtilities.invokeLater(() -> {
                     if (!isAnimationRunning) {
-                        removeAllImages();
-                        currentImageIndex = (currentImageIndex + 1) % Student2_Images.length;
-                        addImage(new BodyImage(Student2_Images[currentImageIndex], 7f));
+                        if(redEars){
+                            removeAllImages();
+                            currentImageIndex = (currentImageIndex + 1) % Student2_ImagesRedEars.length;
+                            addImage(new BodyImage(Student2_ImagesRedEars[currentImageIndex], 7f));
+
+                        } else {
+                            removeAllImages();
+                            currentImageIndex = (currentImageIndex + 1) % Student2_Images.length;
+                            addImage(new BodyImage(Student2_Images[currentImageIndex], 7f));
+                        }
                     }
                 });
             }
@@ -88,6 +97,14 @@ public class Student2 extends Walker {
 
     public void setPunching(Boolean isPunching){
         this.isPunching = isPunching;
+    }
+
+    public void setRedEars(){
+        redEars = true;
+    }
+
+    public Boolean getRedEars(){
+        return redEars;
     }
 
 

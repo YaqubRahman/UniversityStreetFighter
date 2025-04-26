@@ -97,6 +97,7 @@ public class Game {
             level.getStudent().addToTotalCoins(previousTotalCoinsStudent);
             level.getStudent2().addToTotalCoins(previousTotalCoinsStudent2);
             level.start();
+            ((GameView) view).getClockTimer().resetTimer();
             System.out.println("Second Level!!");
         } else if (level instanceof Level2) {
             level.stop();
@@ -108,6 +109,7 @@ public class Game {
             level.getStudent().addToTotalCoins(previousTotalCoinsStudent);
             level.getStudent2().addToTotalCoins(previousTotalCoinsStudent2);
             level.start();
+            ((GameView) view).getClockTimer().resetTimer();
             System.out.println("Third Level!!");
         } else if (level instanceof Level3) {
             level.getStudent().addToTotalCoins(previousTotalCoinsStudent);

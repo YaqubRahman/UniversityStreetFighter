@@ -72,9 +72,12 @@ public class GameView extends UserView {
         g.setColor(Color.WHITE);
         g.drawRect(150, 10, barWidth, barHeight);
 
-
-
     }
+
+    public ClockTimer getClockTimer() {
+        return clockTimer;
+    }
+
 
 
     @Override

@@ -62,9 +62,17 @@ public class StudentController implements KeyListener {
         int code = e.getKeyCode();
         // other key commands omitted
         if (code == KeyEvent.VK_LEFT) {
-            student.startWalking(-5);
+            if(student.getRedBand()){
+                student.startWalking(-10);
+            } else {
+                student.startWalking(-5);
+            }
         } else if (code == KeyEvent.VK_RIGHT) {
-            student.startWalking(5);
+            if(student.getRedBand()){
+                student.startWalking(10);
+            } else {
+                student.startWalking(5);
+            }
         } else if (code == KeyEvent.VK_UP) {
             student.setLinearVelocity(new Vec2(student.getLinearVelocity().x, 30));
             student.removeAllImages();
@@ -73,15 +81,29 @@ public class StudentController implements KeyListener {
         } else if (code == KeyEvent.VK_DOWN) {
             student.setLinearVelocity(new Vec2(student.getLinearVelocity().x, - 30));
         } else if (code == KeyEvent.VK_L){
+            if(student.getRedBand()){
+                student.removeAllImages();
+                student.setPunching(true);
+                student.addImage(new BodyImage("data/AhmadPunch2RedBand.png", 7));
+                punchSound.play();
+            } else{
             student.removeAllImages();
             student.setPunching(true);
             student.addImage(new BodyImage("data/AhmadPunch2.png", 7));
             punchSound.play();
+            }
         } else if (code == KeyEvent.VK_K){
-            student.removeAllImages();
-            student.setPunching(true);
-            student.addImage(new BodyImage("data/AhmadPunch1.png", 7));
-            punchSound.play();
+            if(student.getRedBand()){
+                student.removeAllImages();
+                student.setPunching(true);
+                student.addImage(new BodyImage("data/AhmadPunch1RedBand.png", 7));
+                punchSound.play();
+            } else {
+                student.removeAllImages();
+                student.setPunching(true);
+                student.addImage(new BodyImage("data/AhmadPunch1.png", 7));
+                punchSound.play();
+            }
         } else if (code == KeyEvent.VK_A) {
             student2.startWalking(-5);
         } else if (code == KeyEvent.VK_D) {
