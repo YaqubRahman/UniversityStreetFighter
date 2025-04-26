@@ -83,23 +83,33 @@ public class Game {
 
     }
 
-    public void goToNextLevel(){
+    public void goToNextLevel() {
         SoundHandler.stopCurrentMusic();
-        if (level instanceof Level1){
-            int previousTotalCoinsStudent = level.getStudent().getTotalCoins();
-            int previousTotalCoinsStudent2 = level.getStudent2().getTotalCoins();
+        int previousTotalCoinsStudent = level.getStudent().getTotalCoins();
+        int previousTotalCoinsStudent2 = level.getStudent2().getTotalCoins();
+        if (level instanceof Level1) {
             level.stop();
             level = new Level2(this);
             // level now refer to the new level
             view.setWorld(level);
             controller.updateStudent(level.getStudent(), level.getStudent2());
-            level.addStepListener(new CameraTracker(view, level.getStudent(), level.getStudent2() ));
+            level.addStepListener(new CameraTracker(view, level.getStudent(), level.getStudent2()));
             level.getStudent().addToTotalCoins(previousTotalCoinsStudent);
             level.getStudent2().addToTotalCoins(previousTotalCoinsStudent2);
             level.start();
             System.out.println("Second Level!!");
-        }
-        else if (level instanceof Level2){
+        } else if (level instanceof Level2) {
+            level.stop();
+            level = new Level3(this);
+            // level now refer to the new level
+            view.setWorld(level);
+            controller.updateStudent(level.getStudent(), level.getStudent2());
+            level.addStepListener(new CameraTracker(view, level.getStudent(), level.getStudent2()));
+            level.getStudent().addToTotalCoins(previousTotalCoinsStudent);
+            level.getStudent2().addToTotalCoins(previousTotalCoinsStudent2);
+            level.start();
+            System.out.println("Third Level!!");
+        } else if (level instanceof Level3) {
             System.out.println("Well done! Game complete.");
             JOptionPane.showMessageDialog(frame, "End of game! \nRight Player Total Coins:" + level.getStudentTotalCoins() + "\nLeft Player Total Coins:" + level.getStudent2TotalCoins());
             System.exit(0);

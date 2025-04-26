@@ -19,7 +19,7 @@ public class GameView extends UserView {
         this.level = world;
         background = new ImageIcon("data/Background2.gif").getImage();
         background2 = new ImageIcon("data/Background7.gif").getImage();
-        background5 = new ImageIcon("data/Background5.gif").getImage();
+        background5 = new ImageIcon("data/Background6.gif").getImage();
         AhmadVSkylerImage = new ImageIcon("data/AhmadVSkylerImage.png").getImage();
         clockTimer = new ClockTimer(world, game);
         this.add(clockTimer.getTimerLabel());
@@ -32,6 +32,8 @@ public class GameView extends UserView {
         }
         else if (level instanceof Level2) {
             g.drawImage(background2, 0, 0, getWidth(), getHeight(), this);
+        } else if (level instanceof Level3){
+            g.drawImage(background5, 0, 0, getWidth(), getHeight(), this);
         }
     }
 
