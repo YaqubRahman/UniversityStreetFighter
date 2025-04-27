@@ -144,9 +144,17 @@ public class StudentController implements KeyListener {
                 punchSound.play();
             }
         } else if (code == KeyEvent.VK_A) {
-            student2.startWalking(-5);
+            if(student2.getRedEars()){
+                student2.startWalking(-10);
+            } else{
+                student2.startWalking(-5);
+            }
         } else if (code == KeyEvent.VK_D) {
-            student2.startWalking(5);
+            if(student2.getRedEars()){
+                student2.startWalking(10);
+            } else {
+                student2.startWalking(5);
+            }
         } else if (code == KeyEvent.VK_W) {
             student2.setLinearVelocity(new Vec2(student2.getLinearVelocity().x, 30));
             jumpSound.play();
