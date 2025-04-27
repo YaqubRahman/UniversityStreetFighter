@@ -2,6 +2,22 @@ package game;
 
 import org.jbox2d.common.Vec2;
 
+/**
+ * The {@code Level1} class is the first level in the game, extending the {@link GameWorld} class.
+ * <p>
+ * This level involves two players, represented by the {@link Student} and {@link Student2} classes. The objective
+ * of the level is for each player to defeat the other by reducing their health to zero.
+ * The level includes features such as:
+ * <ul>
+ *     <li>Initial positions for both players.</li>
+ *     <li>Timed power-up spawning at regular intervals.</li>
+ *     <li>Collision listeners for interactions between players and power-ups.</li>
+ *     <li>Health tracking for both players to determine the winner.</li>
+ * </ul>
+ * </p>
+ * The level continues until one player's health reaches zero, at which point the winner is determined.
+ * The game then transitions to the next level based on the result.
+ */
 public class Level1 extends GameWorld {
     private Game game;
     private Student student;
@@ -53,8 +69,4 @@ public class Level1 extends GameWorld {
         else return false;
     }
 
-    @Override
-    public String getLevelName() {
-        return "Level1";
-    }
 }

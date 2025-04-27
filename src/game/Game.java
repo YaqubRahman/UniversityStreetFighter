@@ -7,12 +7,16 @@ import org.jbox2d.common.Vec2;
 import javax.swing.*;
 
 import java.awt.*;
-import java.io.IOException;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
- * Your main game entry point
+ * The main entry point for the game, managing the game world, view, and player interactions.
+ * <p>
+ * This class initializes and controls the flow of the game, including switching between levels
+ * and managing the game window. It also handles background music, camera tracking, and player input.
+ * The game progresses through multiple levels, updating the {@link GameView} and {@link GameWorld},
+ * and resetting relevant game data. It interacts with the {@link Student} and {@link Student2} classes
+ * for player management and the {@link SoundHandler} class for handling background music.
+ * </p>
  */
 public class Game {
     private JFrame frame;

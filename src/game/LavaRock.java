@@ -6,6 +6,19 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
+/**
+ * Represents a LavaRock object that explodes when destroyed, causing an explosion effect in the game.
+ * <p>
+ * The `LavaRock` class extends the `Walker` class and represents a dynamic object that behaves like a rock
+ * in the game world. When the LavaRock is destroyed, it triggers an explosion at its current position
+ * and plays an explosion sound effect. The explosion being of another another class {@link Explosion}.
+ * </p>
+ *
+ * <p>
+ * This object uses a circular shape for its body and has a specific image associated with it. The destruction
+ * of the LavaRock results in creating an explosion and playing an associated sound.
+ * </p>
+ */
 public class LavaRock extends Walker {
     private static final Shape lavarockShape = new CircleShape(2F);
     private static BodyImage image = new BodyImage("data/Rockpng.gif", 4.0f);

@@ -5,6 +5,16 @@ import city.cs.engine.UserView;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Represents the game view that displays the world, player stats, and background images.
+ * <p>
+ * This class extends {@link UserView} and handles the rendering of the game world,
+ * the health and coin counts of the players, and updates the background based on the current level.
+ * It also integrates the {@link ClockTimer} to show the remaining time for each level.
+ * The view changes dynamically as the player progresses through different levels, displaying
+ * unique backgrounds and player information.
+ * </p>
+ */
 public class GameView extends UserView {
     private GameWorld world;
     private Image background;

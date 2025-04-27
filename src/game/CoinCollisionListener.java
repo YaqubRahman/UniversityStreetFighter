@@ -3,6 +3,15 @@ package game;
 import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
 
+/**
+ * Handles collisions between players ({@link Student} and {@link Student2}) and {@link Coin}.
+ * <p>
+ * When a player collides with a coin, the coin count for that player is incremented by 1,
+ * and the coin is destroyed. This class listens for coin collection events and updates
+ * the player's score accordingly.
+ * </p>
+ */
+
 public class CoinCollisionListener implements CollisionListener {
     private Student student;
     private Student2 student2;

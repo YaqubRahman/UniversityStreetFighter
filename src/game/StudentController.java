@@ -13,6 +13,45 @@ import org.jbox2d.common.Vec2;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+/**
+ * The {@code StudentController} class is responsible for handling player inputs from the keyboard to
+ * control the movement and actions of two student characters in the game. It implements the
+ * {@link KeyListener} interface and listens for key events to control the students' behaviors,
+ * including walking, jumping, and punching. The class manages the key mappings for both students
+ * and updates their actions accordingly.
+ *
+ * <p>
+ * This controller handles actions for both players:
+ * <ul>
+ *     <li>Arrow Left Key: Moves the first student (student) left.</li>
+ *     <li>Arrow Right Key: Moves the first student (student) right.</li>
+ *     <li>Up Arrow Key: Makes the first student jump.</li>
+ *     <li>Down Arrow Key: Moves the first student downward.</li>
+ *     <li>L Key: Triggers the first student's punch with red band (if applicable).</li>
+ *     <li>K Key: Triggers the first student's punch without red band.</li>
+ *     <li>A Key: Moves the second student (student2) left.</li>
+ *     <li>D Key: Moves the second student (student2) right.</li>
+ *     <li>W Key: Makes the second student jump.</li>
+ *     <li>S Key: Moves the second student downward.</li>
+ *     <li>Q Key: Triggers an upper punch animation for the second student.</li>
+ *     <li>E Key: Triggers a cautious upper punch animation for the second student.</li>
+ * </ul>
+ * </p>
+ *
+ * <p>
+ * Key attributes include:
+ * <ul>
+ *     <li>{@link #punchSound}: Sound clip for punching actions.</li>
+ *     <li>{@link #jumpSound}: Sound clip for jumping actions.</li>
+ *     <li>{@link #student}: The first student (controlled by player 1).</li>
+ *     <li>{@link #student2}: The second student (controlled by player 2).</li>
+ * </ul>
+ * </p>
+ *
+ * <p>
+ * This class also ensures that appropriate sound effects are played for actions like jumping and punching.
+ * </p>
+ */
 public class StudentController implements KeyListener {
     private Student student;
     private Student2 student2;

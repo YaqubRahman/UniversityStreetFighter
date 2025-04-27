@@ -3,6 +3,19 @@ package game;
 import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
 
+
+/**
+ * Listens for collisions between players and hearts, and restores health when a collision occurs.
+ * <p>
+ * The `HeartCollisionListener` is responsible for handling the collision events where a player collides with a heart.
+ * If the player's health is less than 100, the collision will increase their health by 10 points and destroy the heart object.
+ * </p>
+ *
+ * <p>
+ * This listener works with both players (Student and Student2) and will only increase health if the player's health is not already at the maximum value of 100.
+ * </p>
+ */
+
 public class HeartCollisionListener implements CollisionListener {
     private Student student;
     private Student2 student2;

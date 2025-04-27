@@ -4,6 +4,14 @@ import city.cs.engine.StepEvent;
 import city.cs.engine.StepListener;
 import org.jbox2d.common.Vec2;
 
+
+/**
+ * Dynamically updates the camera position to follow two players ({@link Student} and {@link Student2}).
+ * <p>
+ * On each simulation step, the camera centers horizontally between the two players,
+ * keeping the gameplay view balanced as they move. The vertical position remains fixed.
+ * </p>
+ */
 public class CameraTracker implements StepListener {
     private GameView gameView;
     private Student student;

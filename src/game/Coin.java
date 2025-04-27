@@ -12,6 +12,13 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Represents a collectible coin in the game.
+ * <p>
+ * The coin is a circular object that can be picked up by players. When collected, a sound is played, and the coin is destroyed.
+ * The class integrates with the game's world and uses a sound clip to notify the collection event.
+ * </p>
+ */
 
 public class Coin extends Walker {
     private static final Shape coinShape = new CircleShape(0.7F);

@@ -5,6 +5,21 @@ import city.cs.engine.Shape;
 import org.jbox2d.common.Vec2;
 import java.awt.*;
 
+/**
+ * The abstract base class for game levels, extending {@link World}.
+ * <p>
+ * This class represents a game world, including the setup of the environment (e.g., ground, walls),
+ * player characters, collectibles (e.g., coins, hearts), and level progression logic.
+ * It is responsible for managing collisions, spawning coins and hearts at random positions,
+ * and detecting when a level is complete. The specific level behavior is determined by subclasses.
+ * </p>
+ *
+ * <p>
+ * Subclasses like {@link Level1}, {@link Level2}, and {@link Level3} will define the specifics of
+ * each level (e.g., win conditions, unique objects, etc.). The `GameWorld` class provides the common
+ * mechanics, including player initialization, collectible management, and level transition.
+ * </p>
+ */
 public abstract class GameWorld extends World {
     private Student student;
     private Student2 student2;
@@ -37,7 +52,7 @@ public abstract class GameWorld extends World {
         wall1.setLineColor(new Color(0,0,0,0));
 
         Shape wallleft = new BoxShape(1, 40f);
-        StaticBody wall2 = new StaticBody(this, wallright);
+        StaticBody wall2 = new StaticBody(this, wallleft);
         wall2.setPosition(new Vec2(-18f, -7.5f));
         wall2.setFillColor(new Color(0, 0, 0, 0));
         wall2.setLineColor(new Color(0,0,0,0));
@@ -145,7 +160,6 @@ public abstract class GameWorld extends World {
         return student2;
     }
 
-    public abstract String getLevelName();
 
     public abstract boolean isComplete();
 

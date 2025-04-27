@@ -9,6 +9,26 @@ import java.awt.event.ActionListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * The {@code Level2} class represents the second level in the game, extending the {@link GameWorld} class.
+ * <p>
+ * This level introduces new gameplay elements, including the spawning of {@link LavaRock} obstacles that
+ * interact with both players. The players, represented by {@link Student} and {@link Student2}, must avoid
+ * these hazards while trying to reduce each other's health to zero.
+ * </p>
+ * <p>
+ * Key features of this level include:
+ * <ul>
+ *     <li>Music specific to the level, played throughout the level's duration.</li>
+ *     <li>Timed spawning of {@link LavaRock} obstacles at random horizontal positions.</li>
+ *     <li>Player health management, with both players starting at full health.</li>
+ *     <li>Collision listeners to handle interactions between players and LavaRock obstacles.</li>
+ * </ul>
+ * </p>
+ * The level continues until one player's health reaches zero, determining the winner of the level.
+ * The game then transitions to the next level based on the result.
+ */
+
 public class Level2 extends GameWorld {
     private LavaRock lavaRock;
     private Student student;
@@ -61,8 +81,4 @@ public class Level2 extends GameWorld {
         else return false;
     }
 
-    @Override
-    public String getLevelName() {
-        return "Level2";
-    }
 }

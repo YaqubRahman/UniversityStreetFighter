@@ -7,6 +7,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Manages a countdown timer for the game level.
+ * <p>
+ * Displays the remaining time, updates every second, and triggers level progression
+ * when the timer reaches zero. Integrates directly with the game's UI and flow
+ * by updating a visible timer label and communicating with {@link GameWorld} and {@link Game}.
+ * </p>
+ */
 
 public class ClockTimer {
     private int remainingTime = 100;

@@ -4,7 +4,14 @@ import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
 import city.cs.engine.*;
 
-
+/**
+ * Handles collision events involving an {@link Axe} and players ({@link Student} or {@link Student2}).
+ * <p>
+ * When an axe collides with a player, it reduces the player's health by 20 points
+ * and destroys the axe. This class listens for collisions in both directions —
+ * whether the axe hits the player, or the player hits the axe.
+ * </p>
+ */
 public class AxeCollisionListener implements CollisionListener {
     private Student student;
     private Student2 student2;

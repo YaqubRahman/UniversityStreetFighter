@@ -10,7 +10,25 @@ public class Level3 extends GameWorld {
     private String winner;
 
 
-
+    /**
+     * The {@code Level3} class represents the third level in the game, extending the {@link GameWorld} class.
+     * <p>
+     * This level introduces new challenges with the addition of {@link Axe} obstacles that move across the screen,
+     * potentially damaging players. The players, represented by {@link Student} and {@link Student2}, must avoid these
+     * moving hazards while trying to reduce each other's health to zero.
+     * </p>
+     * <p>
+     * Key features of this level include:
+     * <ul>
+     *     <li>Music specific to the level, played throughout the duration of the level.</li>
+     *     <li>Timed spawning of {@link Axe} obstacles that spawn from either the left or right side of the screen.</li>
+     *     <li>Moving {@link Axe} obstacles with random vertical positions and horizontal movement across the screen.</li>
+     *     <li>Collision listeners to handle interactions between players and the axe obstacles.</li>
+     * </ul>
+     * </p>
+     * The level continues until one player's health reaches zero, determining the winner of the level.
+     * The game then transitions to the next level based on the result.
+     */
     public Level3(Game game) {
         super(game);
         SoundHandler.playSound(level3_music, true);
@@ -61,12 +79,5 @@ public class Level3 extends GameWorld {
             return true;}
         else return false;
     }
-
-    @Override
-    public String getLevelName() {
-        return "Level3";
-    }
-
-
 
 }
