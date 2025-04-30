@@ -16,3 +16,7 @@ Welcome to **University Street Fighter**, a fast-paced fighting game where playe
 1. Clone the repository:
    ```bash
    git clone https://github.com/YaqubRahman/UniversityStreetFighter.git
+
+
+
+![Image Description](https://github.com/YaqubRahman/UniversityStreetFighter/blob/main/data/FightImage.png)
