@@ -40,3 +40,6 @@ java -version
 ## 📷 Game Preview
 ![Image Description](https://github.com/YaqubRahman/UniversityStreetFighter/blob/main/data/FightImage.png)
 ![Image Description](https://github.com/YaqubRahman/UniversityStreetFighter/blob/main/data/FightImage2.png)
+
+
+This project is non-commercial and purely for educational/showcase purposes
