@@ -13,9 +13,10 @@ Welcome to **University Street Fighter**, a fast-paced fighting game where playe
 - **Fight Moves:** `K` (Right Punch), `L` (Left Punch)
 
 ## 🛠️ Installation & Setup
-1. Clone the repository:
+### 1. Clone the repository:
    ```bash
    git clone https://github.com/YaqubRahman/UniversityStreetFighter.git
+   ```
 ### 2. Open the Project in IntelliJ IDEA
 
 - Launch IntelliJ IDEA.
