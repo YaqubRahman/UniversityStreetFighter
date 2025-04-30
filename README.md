@@ -20,3 +20,4 @@ Welcome to **University Street Fighter**, a fast-paced fighting game where playe
 
 
 ![Image Description](https://github.com/YaqubRahman/UniversityStreetFighter/blob/main/data/FightImage.png)
+![Image Description](https://github.com/YaqubRahman/UniversityStreetFighter/blob/main/data/FightImage2.png)
