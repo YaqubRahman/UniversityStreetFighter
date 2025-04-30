@@ -1,4 +1,4 @@
-# 🏆 University Street Fighter
+# 🥊 University Street Fighter
 
 Welcome to **University Street Fighter**, a fast-paced fighting game where players battle using strategic movement and powerful attacks!
 
