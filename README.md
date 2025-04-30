@@ -1,2 +1,18 @@
-Use (AWSD) for movement for left player and (Q) and (E) for fighting moves for left player
-Use (arrow keys) for movement for right player and (K) and (L) for fighting moves for right player
+# 🏆 University Street Fighter
+
+Welcome to **University Street Fighter**, a fast-paced fighting game where players battle using strategic movement and powerful attacks!
+
+## 🎮 Controls
+
+### **Left Player**
+- **Movement:** `A`, `W`, `S`, `D`
+- **Fight Moves:** `Q` (Right Punch), `E` (Left Punch)
+
+### **Right Player**
+- **Movement:** Arrow Keys (`←`, `↑`, `↓`, `→`)
+- **Fight Moves:** `K` (Right Punch), `L` (Left Punch)
+
+## 🛠️ Installation & Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/YaqubRahman/UniversityStreetFighter.git
